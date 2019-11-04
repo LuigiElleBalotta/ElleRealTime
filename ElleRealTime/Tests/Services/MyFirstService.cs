@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using ElleRealTime.Shared.Test;
 using ElleRealTime.Shared.Test.Interfaces;
+using ElleRealTime.Shared.Test.Interfaces.Service;
 using MagicOnion;
 using MagicOnion.Server;
 

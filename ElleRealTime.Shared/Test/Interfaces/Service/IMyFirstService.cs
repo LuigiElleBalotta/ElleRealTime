@@ -1,6 +1,6 @@
 ﻿using MagicOnion;
 
-namespace ElleRealTime.Shared.Test.Interfaces
+namespace ElleRealTime.Shared.Test.Interfaces.Service
 {
     public interface IMyFirstService : IService<IMyFirstService>
     {

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using ElleRealTime.Shared.Test;
 using ElleRealTime.Shared.Test.Interfaces;
+using ElleRealTime.Shared.Test.Interfaces.Service;
 using Grpc.Core;
 using MagicOnion.Client;
 
