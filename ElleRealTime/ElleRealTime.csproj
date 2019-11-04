@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ElleRealTime.Shared\ElleRealTime.Shared.csproj" />
+    <ProjectReference Include="..\ElleRealTimeStd.Shared\ElleRealTimeStd.Shared.csproj" />
   </ItemGroup>
 
 </Project>

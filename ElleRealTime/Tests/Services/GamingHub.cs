@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using System.Numerics;
 using System.Threading.Tasks;
-using ElleRealTime.Shared.Test.Entities.StreamingHub.Player;
-using ElleRealTime.Shared.Test.Interfaces.StreamingHub;
+using ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player;
+using ElleRealTimeStd.Shared.Test.Interfaces.StreamingHub;
 using MagicOnion.Server.Hubs;
 
 namespace ElleRealTime.Tests.Services
