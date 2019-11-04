@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ElleRealTime.Shared.Test.Entities.StreamingHub.Player;
+﻿using ElleRealTime.Shared.Test.Entities.StreamingHub.Player;
 
 namespace ElleRealTime.Shared.Test.Interfaces.StreamingHub
 {

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Numerics;
-using System.Text;
+﻿using System.Numerics;
 using System.Threading.Tasks;
 using ElleRealTime.Shared.Test.Entities.StreamingHub.Player;
 using MagicOnion;

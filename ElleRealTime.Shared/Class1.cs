@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ElleRealTime.Shared
+﻿namespace ElleRealTime.Shared
 {
     public class Class1
     {
