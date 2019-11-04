@@ -1,4 +1,4 @@
-﻿using ElleRealTime.Shared.Test.Interfaces.Service;
+﻿using ElleRealTimeStd.Shared.Test.Interfaces.Service;
 using MagicOnion;
 using MagicOnion.Server;
 
