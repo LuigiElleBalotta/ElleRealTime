@@ -1,0 +1,8 @@
+C:\Sviluppo\ElleRealTime\ElleRealTimeStd.Shared\bin\Debug\netstandard2.0\ElleRealTimeStd.Shared.deps.json
+C:\Sviluppo\ElleRealTime\ElleRealTimeStd.Shared\bin\Debug\netstandard2.0\ElleRealTimeStd.Shared.dll
+C:\Sviluppo\ElleRealTime\ElleRealTimeStd.Shared\obj\Debug\netstandard2.0\ElleRealTimeStd.Shared.AssemblyInfoInputs.cache
+C:\Sviluppo\ElleRealTime\ElleRealTimeStd.Shared\obj\Debug\netstandard2.0\ElleRealTimeStd.Shared.AssemblyInfo.cs
+C:\Sviluppo\ElleRealTime\ElleRealTimeStd.Shared\bin\Debug\netstandard2.0\ElleRealTimeStd.Shared.pdb
+C:\Sviluppo\ElleRealTime\ElleRealTimeStd.Shared\obj\Debug\netstandard2.0\ElleRealTimeStd.Shared.dll
+C:\Sviluppo\ElleRealTime\ElleRealTimeStd.Shared\obj\Debug\netstandard2.0\ElleRealTimeStd.Shared.pdb
+C:\Sviluppo\ElleRealTime\ElleRealTimeStd.Shared\obj\Debug\netstandard2.0\ElleRealTimeStd.Shared.csprojAssemblyReference.cache
