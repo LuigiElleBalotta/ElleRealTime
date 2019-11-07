@@ -16,4 +16,11 @@
     <Compile Include="../../MagicOnionTest/ServerShared/**/*.cs" LinkBase="LinkFromUnity" />
   </ItemGroup>
 
+  <ItemGroup>
+    <SourceFiles Include="$(ProjectDir)../../MagicOnionTest/ServerShared/**/*.cs" Exclude="**\bin\**\*.*;**\obj\**\*.*" />
+  </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Copy SourceFiles="@(SourceFiles)" DestinationFiles="$(ProjectDir)\LinkFromUnity\%(RecursiveDir)%(Filename)%(Extension)" SkipUnchangedFiles="true" />
+  </Target>
+
 </Project>
