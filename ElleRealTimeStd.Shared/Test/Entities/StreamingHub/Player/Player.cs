@@ -1,5 +1,5 @@
-﻿using System.Numerics;
-using MessagePack;
+﻿using MessagePack;
+using UnityEngine;
 
 namespace ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player
 {

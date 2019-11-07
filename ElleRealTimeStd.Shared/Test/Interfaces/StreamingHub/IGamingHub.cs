@@ -1,7 +1,7 @@
-﻿using System.Numerics;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player;
 using MagicOnion;
+using UnityEngine;
 
 namespace ElleRealTimeStd.Shared.Test.Interfaces.StreamingHub
 {
