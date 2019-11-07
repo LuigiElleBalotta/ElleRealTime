@@ -18,6 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="LinkFromUnity\" />
+  </ItemGroup>
+
+  <ItemGroup>
     <SourceFiles Include="$(ProjectDir)../../MagicOnionTest/ServerShared/**/*.cs" Exclude="**\bin\**\*.*;**\obj\**\*.*" />
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">

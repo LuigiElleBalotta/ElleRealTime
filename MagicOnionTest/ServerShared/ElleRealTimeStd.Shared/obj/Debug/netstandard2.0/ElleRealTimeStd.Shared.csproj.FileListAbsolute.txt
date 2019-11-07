@@ -1,6 +1,0 @@
-C:\Sviluppo\MagicOnion\MagicOnionTest\ServerShared\ElleRealTimeStd.Shared\bin\Debug\netstandard2.0\ElleRealTimeStd.Shared.deps.json
-C:\Sviluppo\MagicOnion\MagicOnionTest\ServerShared\ElleRealTimeStd.Shared\bin\Debug\netstandard2.0\ElleRealTimeStd.Shared.dll
-C:\Sviluppo\MagicOnion\MagicOnionTest\ServerShared\ElleRealTimeStd.Shared\bin\Debug\netstandard2.0\ElleRealTimeStd.Shared.pdb
-C:\Sviluppo\MagicOnion\MagicOnionTest\ServerShared\ElleRealTimeStd.Shared\obj\Debug\netstandard2.0\ElleRealTimeStd.Shared.csprojAssemblyReference.cache
-C:\Sviluppo\MagicOnion\MagicOnionTest\ServerShared\ElleRealTimeStd.Shared\obj\Debug\netstandard2.0\ElleRealTimeStd.Shared.dll
-C:\Sviluppo\MagicOnion\MagicOnionTest\ServerShared\ElleRealTimeStd.Shared\obj\Debug\netstandard2.0\ElleRealTimeStd.Shared.pdb
