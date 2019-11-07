@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ElleRealTimeStd.Shared\ElleRealTimeStd.Shared.csproj" />
+    <Compile Include="../../MagicOnionTest/ServerShared/**/*.cs" LinkBase="LinkFromUnity" />
   </ItemGroup>
 
 </Project>
