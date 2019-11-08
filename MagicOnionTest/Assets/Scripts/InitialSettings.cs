@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using MessagePack.Resolvers;
+using MessagePack.Unity;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -12,10 +13,12 @@ namespace Assets.Scripts
         {
             CompositeResolver.RegisterAndSetAsDefault
             (
+                MessagePack.Resolvers.GeneratedResolver.Instance,
+
                 MagicOnion.Resolvers.MagicOnionResolver.Instance,
-                //MessagePack.Resolvers.DynamicGenericResolver.Instance,
                 BuiltinResolver.Instance,
-                PrimitiveObjectResolver.Instance
+                PrimitiveObjectResolver.Instance,
+                UnityResolver.Instance
             );
         }
     }
