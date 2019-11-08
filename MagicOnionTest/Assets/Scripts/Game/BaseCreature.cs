@@ -13,12 +13,19 @@ public class BaseCreature : MonoBehaviour
     void Start()
     {
         m_Animator = gameObject.GetComponent<Animator>();
+        m_Walking = m_Animator.GetBool("IsWalking");
+        Debug.Log("Start, walking = " + m_Walking);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.U))
-            m_Animator.SetBool("IsWalking", !m_Walking);
+        if (Input.GetKeyUp(KeyCode.U))
+        {
+            Debug.Log("Pressed U!!");
+            m_Walking = !m_Walking;
+            m_Animator.SetBool("IsWalking", m_Walking);
+            Debug.Log("Walking: " + m_Walking);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player;
@@ -21,7 +22,18 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
     // Start is called before the first frame update
     void Start()
     {
-        this.InitializeClient();
+        try
+        {
+            this.InitializeClient();
+        }
+        catch (Exception ex)
+        {
+            Debug.Log( ex.InnerException?.Message ?? ex.Message );
+        }
+        finally
+        {
+            Debug.Log("Initialized.");
+        }
     }
 
     // Update is called once per frame
@@ -116,10 +128,10 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
     {
         Debug.Log("Join Player:" + player.Name);
 		
-		Vector3 alexVector3 = new Vector3(18.886f, 2.27f, 28.98f);
+		/*Vector3 alexVector3 = new Vector3(18.886f, 2.27f, 28.98f);
 
         Instantiate(myModel, alexVector3, Quaternion.identity);
-        myModel.AddComponent<Rigidbody>();
+        myModel.AddComponent<Rigidbody>();*/
 
         var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
         cube.name = player.Name;
