@@ -10,6 +10,7 @@ using UnityEngine;
 
 public class InitClient : MonoBehaviour, IGamingHubReceiver
 {
+    public static InitClient Instance { get { return _instance; } }
     private Channel channel;
     private IGamingHub streamingClient;
     Dictionary<string, GameObject> players = new Dictionary<string, GameObject>();
@@ -18,17 +19,23 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
     private bool isSelfDisConnected;
 
     public GameObject myModel;
+    private static InitClient _instance;
 
+    void Awake()
+    {
+        _instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
         try
         {
+            
             this.InitializeClient();
         }
-        catch (Exception ex)
+        catch (RpcException ex)
         {
-            Debug.Log( ex.InnerException?.Message ?? ex.Message );
+            Debug.Log("Cannot connect to a server.");
         }
         finally
         {
@@ -133,10 +140,10 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
         Instantiate(myModel, alexVector3, Quaternion.identity);
         myModel.AddComponent<Rigidbody>();*/
 
-        var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        /*var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
         cube.name = player.Name;
-        cube.transform.SetPositionAndRotation(player.Position, player.Rotation);
-        players[player.Name] = cube;
+        cube.transform.SetPositionAndRotation(player.Position, player.Rotation);*/
+        players[player.Name] = myModel;
     }
 
     void IGamingHubReceiver.OnLeave(Player player)

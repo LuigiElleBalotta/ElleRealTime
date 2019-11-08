@@ -44,8 +44,15 @@ public class BaseCreature : MonoBehaviour
             {
                 //Swap the position
                 //newPos *= -1.0f;
+                Debug.Log("Arrived.");
             }
             //m_Rigidbody.velocity = transform.forward * speed;
+            InitClient.Instance.MoveAsync(transform.position, transform.rotation);
         }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject.tag);
     }
 }
