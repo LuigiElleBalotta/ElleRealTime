@@ -16,6 +16,8 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
     private bool isJoin;
     private bool isSelfDisConnected;
 
+    public GameObject myModel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -113,6 +115,11 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
     void IGamingHubReceiver.OnJoin(Player player)
     {
         Debug.Log("Join Player:" + player.Name);
+		
+		Vector3 alexVector3 = new Vector3(18.886f, 2.27f, 28.98f);
+
+        GameObject alexGob = Instantiate(myModel, alexVector3, Quaternion.identity) as GameObject;
+        alexGob.AddComponent<Rigidbody>();
 
         var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
         cube.name = player.Name;
