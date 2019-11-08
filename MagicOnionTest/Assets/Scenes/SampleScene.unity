@@ -428,7 +428,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: d6ac45e6eba2bea4eb829c3624b497c2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.22
+      value: 17.814
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: d6ac45e6eba2bea4eb829c3624b497c2,
         type: 3}
@@ -521,6 +521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae02e3c2d2ce094596bf032a0607935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
 --- !u!143 &1761532233
 CharacterController:
   m_ObjectHideFlags: 0
