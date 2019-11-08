@@ -118,8 +118,8 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
 		
 		Vector3 alexVector3 = new Vector3(18.886f, 2.27f, 28.98f);
 
-        GameObject alexGob = Instantiate(myModel, alexVector3, Quaternion.identity) as GameObject;
-        alexGob.AddComponent<Rigidbody>();
+        Instantiate(myModel, alexVector3, Quaternion.identity);
+        myModel.AddComponent<Rigidbody>();
 
         var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
         cube.name = player.Name;
