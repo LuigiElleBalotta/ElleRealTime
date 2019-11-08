@@ -36,7 +36,6 @@ public class BaseCreature : MonoBehaviour
 
         if (m_Walking)
         {
-
             float step = speed * Time.deltaTime; //calculate distance to move
             var newPos = new Vector3(transform.position.x - 10, transform.position.y, transform.position.z);
             transform.position = Vector3.MoveTowards(transform.position, newPos, step);
@@ -44,7 +43,7 @@ public class BaseCreature : MonoBehaviour
             if (Vector3.Distance(transform.position, newPos) < 0.001f)
             {
                 //Swap the position
-                newPos *= -1.0f;
+                //newPos *= -1.0f;
             }
             //m_Rigidbody.velocity = transform.forward * speed;
         }
