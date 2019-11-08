@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.Game;
 using UnityEngine;
 
+//This should become BasePlayer LOL.
 public class BaseCreature : MonoBehaviour
 {
     Animator m_Animator;
@@ -14,6 +16,10 @@ public class BaseCreature : MonoBehaviour
     public float speed = 1.0f;
 
     private Transform target;
+
+    void Awake()
+    {
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -26,11 +32,12 @@ public class BaseCreature : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKeyUp(KeyCode.U))
         {
             Debug.Log("Pressed U!!");
             m_Walking = !m_Walking;
-            m_Animator.SetBool("IsWalking", m_Walking);
+            SetAnimState(m_Walking ? CharAnimState.Walk : CharAnimState.Stand);
             Debug.Log("Walking: " + m_Walking);
         }
 
@@ -49,6 +56,11 @@ public class BaseCreature : MonoBehaviour
             //m_Rigidbody.velocity = transform.forward * speed;
             InitClient.Instance.MoveAsync(transform.position, transform.rotation);
         }
+    }
+
+    void SetAnimState(CharAnimState state)
+    {
+        m_Animator.SetInteger("CharAnimState", (int)state);
     }
 
     void OnCollisionEnter(Collision collision)
