@@ -17,10 +17,11 @@ namespace ElleRealTime.Tests.Services
 
         public async Task<Player[]> JoinAsync(string roomName, string userName, Vector3 position, Quaternion rotation)
         {
+            Vector3 tmpPos = new Vector3(22.79f, 0.197f, 32.23f);
             self = new Player
             {
                 Name = userName,
-                Position = position,
+                Position = tmpPos,
                 Rotation = rotation
             };
 

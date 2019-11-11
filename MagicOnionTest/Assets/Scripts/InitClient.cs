@@ -14,6 +14,7 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
     private Channel channel;
     private IGamingHub streamingClient;
     Dictionary<string, GameObject> players = new Dictionary<string, GameObject>();
+    private string currentPlayerName = "";
 
     private bool isJoin;
     private bool isSelfDisConnected;
@@ -51,22 +52,21 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
 
     private async void InitializeClient()
     {
+        System.Random rnd = new System.Random();
+        int randomId = rnd.Next(1, 20);
+        currentPlayerName = "Elle_" + randomId;
+
         // Initialize the Hub
         this.channel = new Channel("localhost", 12345, ChannelCredentials.Insecure);
-        // for SSL/TLS connection
-        //var serverCred = new SslCredentials(File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "server.crt")));
-        //this.channel = new Channel("test.example.com", 12345, serverCred);
-        GameObject player = await ConnectAsync(channel, "test", "Elle");
-        //this.streamingClient = StreamingHubClient.Connect<IGamingHub, IGamingHubReceiver>(this.channel, this);
+        GameObject player = await ConnectAsync(channel, "test", currentPlayerName);
         this.RegisterDisconnectEvent(streamingClient);
-        //this.client = MagicOnionClient.Create<IChatService>(this.channel);
     }
 
     private async Task<GameObject> ConnectAsync(Channel grpcChannel, string roomName, string playerName)
     {
         this.streamingClient = StreamingHubClient.Connect<IGamingHub, IGamingHubReceiver>(grpcChannel, this);
 
-        var roomPlayers = await this.streamingClient.JoinAsync(roomName, playerName, Vector3.zero, Quaternion.identity);
+        var roomPlayers = await this.streamingClient.JoinAsync(roomName, playerName, /*Vector3.zero*/ new Vector3(22.79f, 0.197f, 32.23f), Quaternion.identity);
         foreach (var player in roomPlayers)
         {
             (this as IGamingHubReceiver).OnJoin(player);
@@ -133,17 +133,22 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
 
     void IGamingHubReceiver.OnJoin(Player player)
     {
-        Debug.Log("Join Player:" + player.Name);
-		
-		/*Vector3 alexVector3 = new Vector3(18.886f, 2.27f, 28.98f);
+        if (currentPlayerName != player.Name)
+        {
+            Debug.Log("Join Player:" + player.Name);
+            Instantiate(myModel, player.Position, player.Rotation);
+            //myModel.AddComponent<Rigidbody>();
+        }
 
-        Instantiate(myModel, alexVector3, Quaternion.identity);
-        myModel.AddComponent<Rigidbody>();*/
-
-        /*var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        cube.name = player.Name;
-        cube.transform.SetPositionAndRotation(player.Position, player.Rotation);*/
-        players[player.Name] = myModel;
+        if (!players.ContainsKey(player.Name))
+        {
+            players.Add(player.Name, myModel);
+        }
+        else
+        {
+            Debug.Log("OnJoin: player already joined!!");
+        }
+        
     }
 
     void IGamingHubReceiver.OnLeave(Player player)
@@ -160,9 +165,10 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
     {
         Debug.Log("Move Player:" + player.Name);
 
-        if (players.TryGetValue(player.Name, out var cube))
+        if (players.TryGetValue(player.Name, out var otherPerson))
         {
-            cube.transform.SetPositionAndRotation(player.Position, player.Rotation);
+            //Vector3.MoveTowards(otherPerson.transform.position, player.Position, Time.deltaTime);
+            otherPerson.transform.SetPositionAndRotation(player.Position, player.Rotation);
         }
     }
 }
