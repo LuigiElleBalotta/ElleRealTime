@@ -32,30 +32,34 @@ public class BaseCreature : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetKeyUp(KeyCode.U))
+        if (transform.gameObject.name == InitClient.GetCurrentPlayerName())
         {
-            Debug.Log("Pressed U!!");
-            m_Walking = !m_Walking;
-            SetAnimState(m_Walking ? CharAnimState.Walk : CharAnimState.Stand);
-            Debug.Log("Walking: " + m_Walking);
-        }
-
-        if (m_Walking)
-        {
-            float step = speed * Time.deltaTime; //calculate distance to move
-            var newPos = new Vector3(transform.position.x - 10, transform.position.y, transform.position.z);
-            transform.position = Vector3.MoveTowards(transform.position, newPos, step);
-
-            if (Vector3.Distance(transform.position, newPos) < 0.001f)
+            if (Input.GetKeyUp(KeyCode.U))
             {
-                //Swap the position
-                //newPos *= -1.0f;
-                Debug.Log("Arrived.");
+                Debug.Log("Pressed U!!");
+                m_Walking = !m_Walking;
+                SetAnimState(m_Walking ? CharAnimState.Walk : CharAnimState.Stand);
+                Debug.Log("Walking: " + m_Walking);
             }
-            //m_Rigidbody.velocity = transform.forward * speed;
-            InitClient.Instance.MoveAsync(transform.position, transform.rotation);
+
+            if (m_Walking)
+            {
+                float step = speed * Time.deltaTime; //calculate distance to move
+                var newPos = new Vector3(transform.position.x - 10, transform.position.y, transform.position.z);
+                transform.position = Vector3.MoveTowards(transform.position, newPos, step);
+
+                if (Vector3.Distance(transform.position, newPos) < 0.001f)
+                {
+                    //Swap the position
+                    //newPos *= -1.0f;
+                    Debug.Log("Arrived.");
+                }
+                //Send my actual position to all connected clients.
+                InitClient.Instance.MoveAsync(transform.position, transform.rotation);
+            }
+
         }
+        
     }
 
     void SetAnimState(CharAnimState state)

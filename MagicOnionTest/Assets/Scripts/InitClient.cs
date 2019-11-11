@@ -14,7 +14,7 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
     private Channel channel;
     private IGamingHub streamingClient;
     Dictionary<string, GameObject> players = new Dictionary<string, GameObject>();
-    private string currentPlayerName = "";
+    private static string currentPlayerName = "";
 
     private bool isJoin;
     private bool isSelfDisConnected;
@@ -48,6 +48,11 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
     void Update()
     {
         
+    }
+
+    public static string GetCurrentPlayerName()
+    {
+        return currentPlayerName;
     }
 
     private async void InitializeClient()
@@ -133,16 +138,13 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
 
     void IGamingHubReceiver.OnJoin(Player player)
     {
-        if (currentPlayerName != player.Name)
-        {
-            Debug.Log("Join Player:" + player.Name);
-            Instantiate(myModel, player.Position, player.Rotation);
-            //myModel.AddComponent<Rigidbody>();
-        }
-
+        GameObject p = null;
+        Debug.Log("Join Player:" + player.Name);
         if (!players.ContainsKey(player.Name))
         {
-            players.Add(player.Name, myModel);
+            p = Instantiate(myModel, player.Position, player.Rotation);
+            p.name = player.Name;
+            players.Add(player.Name, p);
         }
         else
         {
@@ -163,12 +165,13 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
 
     void IGamingHubReceiver.OnMove(Player player)
     {
-        Debug.Log("Move Player:" + player.Name);
+        Debug.Log($"{player.Name} si sta muovendo!!");
 
         if (players.TryGetValue(player.Name, out var otherPerson))
         {
-            //Vector3.MoveTowards(otherPerson.transform.position, player.Position, Time.deltaTime);
-            otherPerson.transform.SetPositionAndRotation(player.Position, player.Rotation);
+            if( otherPerson != null )
+                otherPerson.transform.position = Vector3.MoveTowards(otherPerson.transform.position, player.Position, 1.0f * Time.deltaTime);
+            //otherPerson.transform.SetPositionAndRotation(player.Position, player.Rotation);
         }
     }
 }
