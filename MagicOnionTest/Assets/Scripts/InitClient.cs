@@ -131,6 +131,11 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
         return streamingClient.DisposeAsync();
     }
 
+    protected async void OnDestroy()
+    {
+        await this.streamingClient.DisposeAsync();
+    }
+
     // You can watch connection state, use this for retry etc.
     public Task WaitForDisconnect()
     {
