@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Assets.Scripts.Game;
 using ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player;
 using ElleRealTimeStd.Shared.Test.Interfaces.StreamingHub;
 using Grpc.Core;
@@ -169,8 +170,14 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
 
         if (players.TryGetValue(player.Name, out var otherPerson))
         {
-            if( otherPerson != null )
+            if (otherPerson != null && otherPerson.name != currentPlayerName)
+            {
+                var animator = otherPerson.GetComponent<Animator>();
+                animator.SetInteger("CharAnimState", (int)CharAnimState.Walk);
                 otherPerson.transform.position = Vector3.MoveTowards(otherPerson.transform.position, player.Position, 1.0f * Time.deltaTime);
+
+            }
+                
             //otherPerson.transform.SetPositionAndRotation(player.Position, player.Rotation);
         }
     }
