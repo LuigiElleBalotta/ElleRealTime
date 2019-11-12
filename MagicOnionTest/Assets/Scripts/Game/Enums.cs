@@ -12,6 +12,7 @@ namespace Assets.Scripts.Game
         Walk = 1,
         WalkBackwards = 2,
         SitGroundDown = 3,
-        SitGroundUp = 4
+        SitGroundUp = 4,
+        Jump = 5
     }
 }

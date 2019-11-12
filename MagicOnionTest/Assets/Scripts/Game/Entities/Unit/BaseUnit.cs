@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.Game;
+using TMPro;
 using UnityEngine;
 
 //This should become BasePlayer LOL.
@@ -38,15 +39,21 @@ public class BaseUnit : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.D))//Should rotate unit
             {
-                transform.position += Vector3.forward * speed * Time.deltaTime;
-                SetAnimState(CharAnimState.Walk);
+                /*transform.position += Vector3.forward * speed * Time.deltaTime;
+                SetAnimState(CharAnimState.Walk);*/
+
+                transform.rotation = Quaternion.Euler( new Vector3(0, 90 * Time.deltaTime, 0));
+
                 //Send my actual position to all connected clients.
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
             }
             else if (Input.GetKey(KeyCode.A))//Should rotate unit
             {
-                transform.position += Vector3.back * speed * Time.deltaTime;
-                SetAnimState(CharAnimState.Walk);
+                /*transform.position += Vector3.back * speed * Time.deltaTime;
+                SetAnimState(CharAnimState.Walk);*/
+
+                transform.Rotate(-Vector3.up * 4.0f * Time.deltaTime);
+
                 //Send my actual position to all connected clients.
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
             }
@@ -76,6 +83,10 @@ public class BaseUnit : MonoBehaviour
                     SetAnimState(CharAnimState.SitGroundUp);
                     m_CanStand = true;
                 }
+            }
+            else if (Input.GetKeyUp(KeyCode.Space))
+            {
+                SetAnimState(CharAnimState.Jump);
             }
             else
             {
@@ -112,8 +123,11 @@ public class BaseUnit : MonoBehaviour
     {
         m_Animator.StopPlayback();
         m_Animator.SetInteger("CharAnimState", (int)state);
-        InitClient.Instance.SendAnimationAsync(state);
-        m_OldCharAnimState = state;
+        if (m_OldCharAnimState != state)
+        {
+            InitClient.Instance.SendAnimationAsync(state);
+            m_OldCharAnimState = state;
+        }
     }
 
     void OnCollisionEnter(Collision collision)
