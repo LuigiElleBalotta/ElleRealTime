@@ -72,7 +72,7 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
     {
         this.streamingClient = StreamingHubClient.Connect<IGamingHub, IGamingHubReceiver>(grpcChannel, this);
 
-        var roomPlayers = await this.streamingClient.JoinAsync(roomName, playerName, /*Vector3.zero*/ new Vector3(22.79f, 0.197f, 32.23f), Quaternion.identity);
+        var roomPlayers = await this.streamingClient.JoinAsync(roomName, playerName, /*Vector3.zero*/ new Vector3(11.13949f, 4.719501f, -116.671f), Quaternion.identity);
         foreach (var player in roomPlayers)
         {
             (this as IGamingHubReceiver).OnJoin(player);
