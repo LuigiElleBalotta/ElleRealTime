@@ -13,10 +13,12 @@ public class BaseUnit : MonoBehaviour
     private bool m_Jump;
 
     private bool m_Walking;
+    private bool m_Running = true;
     private bool m_CanStand = true;
     private CharAnimState m_OldCharAnimState = CharAnimState.Stand;
 
-    public float speed = 4.0f;
+    public float speedWalk = 1.0f;
+    public float speedRun = 2.0f;
 
     private Transform target;
 
@@ -37,7 +39,12 @@ public class BaseUnit : MonoBehaviour
     {
         if (transform.gameObject.name == InitClient.GetCurrentPlayerName())
         {
-            if (Input.GetKey(KeyCode.D))//Should rotate unit
+            if (Input.GetKeyUp(KeyCode.Slash))
+            {
+                m_Running = !m_Running;
+                Debug.Log($"Running: " + m_Running);
+            }
+            else if (Input.GetKey(KeyCode.D))//Should rotate unit
             {
                 /*transform.position += Vector3.forward * speed * Time.deltaTime;
                 SetAnimState(CharAnimState.Walk);*/
@@ -59,14 +66,14 @@ public class BaseUnit : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.W))
             {
-                transform.position += Vector3.left * speed * Time.deltaTime;
-                SetAnimState(CharAnimState.Walk);
+                transform.position += Vector3.left * ( m_Running ? speedRun : speedWalk ) * Time.deltaTime;
+                SetAnimState(m_Running ? CharAnimState.Run : CharAnimState.Walk);
                 //Send my actual position to all connected clients.
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
             }
             else if (Input.GetKey(KeyCode.S))
             {
-                transform.position += Vector3.right * speed * Time.deltaTime;
+                transform.position += Vector3.right * speedWalk * Time.deltaTime;
                 SetAnimState(CharAnimState.WalkBackwards);
                 //Send my actual position to all connected clients.
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
