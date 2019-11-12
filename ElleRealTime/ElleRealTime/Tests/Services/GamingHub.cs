@@ -53,5 +53,10 @@ namespace ElleRealTime.Tests.Services
             Broadcast(room).OnMove(self);
         }
 
+        public async Task SendAnimStateAsync(int state)
+        {
+            Broadcast(room).OnAnimStateChange(self.Name, state);
+        }
+
     }
 }

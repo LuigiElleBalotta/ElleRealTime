@@ -13,6 +13,7 @@ public class BaseUnit : MonoBehaviour
 
     private bool m_Walking;
     private bool m_CanStand = true;
+    private CharAnimState m_OldCharAnimState = CharAnimState.Stand;
 
     public float speed = 4.0f;
 
@@ -111,6 +112,8 @@ public class BaseUnit : MonoBehaviour
     {
         m_Animator.StopPlayback();
         m_Animator.SetInteger("CharAnimState", (int)state);
+        InitClient.Instance.SendAnimationAsync(state);
+        m_OldCharAnimState = state;
     }
 
     void OnCollisionEnter(Collision collision)

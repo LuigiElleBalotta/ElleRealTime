@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Assets.Scripts.Game;
 using ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player;
 using MagicOnion;
 using UnityEngine;
@@ -10,5 +11,6 @@ namespace ElleRealTimeStd.Shared.Test.Interfaces.StreamingHub
         Task<Player[]> JoinAsync(string roomName, string userName, Vector3 position, Quaternion rotation);
         Task LeaveAsync();
         Task MoveAsync(Vector3 position, Quaternion rotation);
+        Task SendAnimStateAsync(int state);
     }
 }

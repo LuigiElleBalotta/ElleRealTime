@@ -125,6 +125,11 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
         return streamingClient.MoveAsync(position, rotation);
     }
 
+    public Task SendAnimationAsync(CharAnimState state)
+    {
+        return streamingClient.SendAnimStateAsync((int)state);
+    }
+
     // dispose client-connection before channel.ShutDownAsync is important!
     public Task DisposeAsync()
     {
@@ -177,13 +182,27 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
         {
             if (otherPerson != null && otherPerson.name != currentPlayerName)
             {
-                var animator = otherPerson.GetComponent<Animator>();
-                animator.SetInteger("CharAnimState", (int)CharAnimState.Walk);
+                /*var animator = otherPerson.GetComponent<Animator>();
+                animator.SetInteger("CharAnimState", (int)CharAnimState.Walk);*/
                 otherPerson.transform.position = Vector3.MoveTowards(otherPerson.transform.position, player.Position, 1.0f * Time.deltaTime);
 
             }
                 
             //otherPerson.transform.SetPositionAndRotation(player.Position, player.Rotation);
+        }
+    }
+
+    void IGamingHubReceiver.OnAnimStateChange(string playerName, int state)
+    {
+        Debug.Log($"{playerName} CAMBIA ANIM STATE!!");
+
+        if (players.TryGetValue(playerName, out var otherPerson))
+        {
+            if (otherPerson != null && otherPerson.name != currentPlayerName)
+            {
+                var animator = otherPerson.GetComponent<Animator>();
+                animator.SetInteger("CharAnimState", state);
+            }
         }
     }
 }
