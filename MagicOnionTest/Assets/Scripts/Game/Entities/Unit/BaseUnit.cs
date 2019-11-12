@@ -49,7 +49,9 @@ public class BaseUnit : MonoBehaviour
                 /*transform.position += Vector3.forward * speed * Time.deltaTime;
                 SetAnimState(CharAnimState.Walk);*/
 
-                transform.rotation = Quaternion.Euler( new Vector3(0, 90 * Time.deltaTime, 0));
+                /*transform.rotation = Quaternion.RotateTowards(transform.rotation, 
+                                             new Quaternion(transform.rotation.x, transform.rotation.y - 1, transform.rotation.z, transform.rotation.w), 
+                                                1.0f * Time.deltaTime);*/
 
                 //Send my actual position to all connected clients.
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
@@ -59,7 +61,9 @@ public class BaseUnit : MonoBehaviour
                 /*transform.position += Vector3.back * speed * Time.deltaTime;
                 SetAnimState(CharAnimState.Walk);*/
 
-                transform.Rotate(-Vector3.up * 4.0f * Time.deltaTime);
+                /*transform.rotation = Quaternion.RotateTowards(transform.rotation,
+                    new Quaternion(transform.rotation.x, transform.rotation.y + 1, transform.rotation.z, transform.rotation.w),
+                    1.0f * Time.deltaTime);*/
 
                 //Send my actual position to all connected clients.
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
