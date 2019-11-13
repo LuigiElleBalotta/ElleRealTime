@@ -45,7 +45,9 @@ public class BaseUnit : MonoBehaviour
             {
                 var camera = Camera.main;
                 camera.GetComponent<WarcraftCamera>().Target = this;
+                settedTarget = true;
             }
+
             
             if (Input.GetKeyUp(KeyCode.Slash))
             {
@@ -54,40 +56,24 @@ public class BaseUnit : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.D))//Should rotate unit
             {
-                /*transform.position += Vector3.forward * speed * Time.deltaTime;
-                SetAnimState(CharAnimState.Walk);*/
-
-                /*transform.rotation = Quaternion.RotateTowards(transform.rotation, 
-                                             new Quaternion(transform.rotation.x, transform.rotation.y - 1, transform.rotation.z, transform.rotation.w), 
-                                                1.0f * Time.deltaTime);*/
-
-                //Send my actual position to all connected clients.
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
             }
             else if (Input.GetKey(KeyCode.A))//Should rotate unit
             {
-                /*transform.position += Vector3.back * speed * Time.deltaTime;
-                SetAnimState(CharAnimState.Walk);*/
-
-                /*transform.rotation = Quaternion.RotateTowards(transform.rotation,
-                    new Quaternion(transform.rotation.x, transform.rotation.y + 1, transform.rotation.z, transform.rotation.w),
-                    1.0f * Time.deltaTime);*/
-
-                //Send my actual position to all connected clients.
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
             }
             else if (Input.GetKey(KeyCode.W))
             {
                 transform.position += Vector3.left * ( m_Running ? speedRun : speedWalk ) * Time.deltaTime;
                 SetAnimState(m_Running ? CharAnimState.Run : CharAnimState.Walk);
-                //Send my actual position to all connected clients.
+
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
             }
             else if (Input.GetKey(KeyCode.S))
             {
                 transform.position += Vector3.right * speedWalk * Time.deltaTime;
                 SetAnimState(CharAnimState.WalkBackwards);
-                //Send my actual position to all connected clients.
+
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
             }
             else if (Input.GetKeyUp(KeyCode.X))
@@ -118,22 +104,6 @@ public class BaseUnit : MonoBehaviour
                 }
                     
             }
-
-            /*if (m_Walking)
-            {
-                float step = speed * Time.deltaTime; //calculate distance to move
-                var newPos = new Vector3(transform.position.x - 10, transform.position.y, transform.position.z);
-                transform.position = Vector3.MoveTowards(transform.position, newPos, step);
-
-                if (Vector3.Distance(transform.position, newPos) < 0.001f)
-                {
-                    //Swap the position
-                    //newPos *= -1.0f;
-                    Debug.Log("Arrived.");
-                }
-                
-            }*/
-
         }
         Position = transform.position;
     }

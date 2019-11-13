@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4567474249043584766}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7216747570510523159}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_94
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8092751032686296005}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_113
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5228140906263217863}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_100
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3881411983751971601}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_71
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,7 +160,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 594369169218966858}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_65
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8218228634211872179}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_107
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1675328522034781624}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_118
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4268422479703428970}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_33
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6200570637709025354}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_57
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,7 +312,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5446346788678735204}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_77
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,7 +342,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7160196755845587118}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_104
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -372,7 +372,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2698273572692131025}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_136
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,9 +407,9 @@ GameObject:
   - component: {fileID: 7098121524543390472}
   - component: {fileID: 7098121524543390475}
   - component: {fileID: 7098121524543390473}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: alexstraza
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -509,7 +509,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae02e3c2d2ce094596bf032a0607935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speedWalk: 1
+  speedRun: 2
 --- !u!1 &1339159432282548421
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,7 +520,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4531054482488829967}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_88
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -549,7 +550,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8144291630085354970}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_31
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -579,7 +580,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2250651862721180767}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_110
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -609,7 +610,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6324027571991024193}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_51
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -639,7 +640,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4731300271390605606}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_90
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -669,7 +670,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9109836900976809}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_137
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -699,7 +700,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4049314799456857035}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -731,7 +732,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5705356725386640673}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_139
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -761,7 +762,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3386355280485281813}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_103
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -791,7 +792,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2299486423087448624}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_44
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -821,7 +822,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5881452723499835110}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -852,7 +853,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3830442482539114204}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -883,7 +884,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5754105806326147139}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_63
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -913,7 +914,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5968681038774399025}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -957,7 +958,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4615776694451401098}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_27
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -987,7 +988,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4963280293093158733}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1018,7 +1019,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5151214712068822564}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_122
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1048,7 +1049,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8671017974960783371}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_42
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1081,7 +1082,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5394175804348243968}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1112,7 +1113,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8315829129770564035}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_47
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1142,7 +1143,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1163353807307324584}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_142
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1172,7 +1173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8773225824754110775}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_119
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1203,7 +1204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3624965019330637560}
   - component: {fileID: 8505666945890273111}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1433,7 +1434,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9029234430172830806}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_69
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1463,7 +1464,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7269792942479177697}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_106
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1493,7 +1494,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3874607980987818497}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_36
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1523,7 +1524,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1407952840860012725}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_62
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1553,7 +1554,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4658171206442873128}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1584,7 +1585,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4300194746111358031}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_101
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1614,7 +1615,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5760863593464047117}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_30
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1644,7 +1645,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 498263620573052441}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_61
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1675,7 +1676,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5343262731085590839}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_84
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1705,7 +1706,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7638717214742729664}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1740,7 +1741,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1224183902260900608}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_127
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1770,7 +1771,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2402168549614027855}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_121
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1800,7 +1801,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8133200258627179939}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1847,7 +1848,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2876110164433750442}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_50
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1888,7 +1889,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8446973109461331764}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_34
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1919,7 +1920,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4157845048768209347}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_132
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1949,7 +1950,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7730588390882553880}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_59
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1980,7 +1981,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6008799922003512950}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2011,7 +2012,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4759709900806716710}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_75
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2041,7 +2042,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6560141798894867143}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2074,7 +2075,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5846171311894608635}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_115
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2104,7 +2105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7212977874340002006}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_32
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2134,7 +2135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8427041358695112005}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2180,7 +2181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3518608757993385187}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_55
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2211,7 +2212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4029201039854622216}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_99
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2241,7 +2242,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1822913209690670459}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_117
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2271,7 +2272,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1422131436766799554}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_68
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2301,7 +2302,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8361411327751957402}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2338,7 +2339,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 843288794623789113}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_133
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2368,7 +2369,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4911273439652542218}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_37
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2399,7 +2400,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2184151869271612407}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_89
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2429,7 +2430,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8959895123683438270}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2460,7 +2461,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4796549569328143158}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_129
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2490,7 +2491,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1447660398548067521}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2528,7 +2529,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5301004584230346201}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_76
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2558,7 +2559,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 320725737511779711}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_81
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2588,7 +2589,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8947708338454696051}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2618,7 +2619,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8694275030177561373}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_92
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2648,7 +2649,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6008279324840968969}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_87
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2678,7 +2679,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4057443098158826394}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_124
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2708,7 +2709,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3596339851048463204}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_102
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2738,7 +2739,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1353749120057435003}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_67
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2768,7 +2769,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3850942484916404036}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_40
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2802,7 +2803,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 394410881731595102}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_38
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2833,7 +2834,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3420178065246171316}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2870,7 +2871,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4627835251199563436}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_45
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2900,7 +2901,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7612414663119596574}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2933,7 +2934,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 768006678985061682}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_74
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2963,7 +2964,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1531223892300425203}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_58
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2994,7 +2995,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2076902282169041115}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3025,7 +3026,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1943916468783619148}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_53
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3056,7 +3057,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6837814307051156478}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_108
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3086,7 +3087,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 489060357482355760}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_41
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3117,7 +3118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8402056520589453941}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_83
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3147,7 +3148,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4336233101401165286}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_60
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3178,7 +3179,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4693053384846233536}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_138
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3208,7 +3209,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 446161588584538613}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_28
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3238,7 +3239,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2391913037641428925}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_130
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3270,7 +3271,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6757746487552456937}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_48
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3308,7 +3309,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5576355020458847809}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_93
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3338,7 +3339,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7667105853985842000}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_54
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3369,7 +3370,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5465912248246209414}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_131
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3402,7 +3403,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1724972083397498890}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3432,7 +3433,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3671959456105518536}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_46
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3462,7 +3463,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5364302349303545774}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_116
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3492,7 +3493,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3643444906574860550}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_70
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3522,7 +3523,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 408431534932981872}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_52
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3553,7 +3554,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3009819335563692414}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_96
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3583,7 +3584,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6143601588746253237}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_73
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3613,7 +3614,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4299521840146161277}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_134
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3643,7 +3644,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5707331705665745739}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_141
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3673,7 +3674,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4040023393947700978}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_97
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3703,7 +3704,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7301099166468908840}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_56
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3734,7 +3735,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5916849563323523427}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_125
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3764,7 +3765,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3070381247715345778}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_29
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3794,7 +3795,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6297362102137272842}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_105
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3824,7 +3825,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1188674341003466751}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_98
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3854,7 +3855,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1615614795460581693}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3885,7 +3886,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1516571702361892119}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_66
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3915,7 +3916,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7772444901213848269}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_35
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3945,7 +3946,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4856646832987551955}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_82
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3975,7 +3976,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6559314194730033025}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_128
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4005,7 +4006,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6475792897506761241}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_126
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4035,7 +4036,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5839916287235663177}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4065,7 +4066,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1783719630776845755}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_39
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4095,7 +4096,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1072978843442924367}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_86
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4125,7 +4126,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5265817544613382035}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4156,7 +4157,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6876955712478790199}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_135
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4186,7 +4187,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5397020942425332154}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_140
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4216,7 +4217,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3370343155804819675}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_120
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4246,7 +4247,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5652501537363859449}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_78
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4276,7 +4277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5371235472147593149}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_43
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4307,7 +4308,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7085834615474631194}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_123
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4337,7 +4338,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7346676875047736402}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_95
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4367,7 +4368,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8448413535155322722}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4397,7 +4398,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7203559293814095818}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_109
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4427,7 +4428,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1635576351978036484}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_111
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4457,7 +4458,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1259006073971544234}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_49
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4487,7 +4488,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8340648741710926706}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_85
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4517,7 +4518,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7707577515223153042}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4547,7 +4548,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 852643779587870595}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_114
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4577,7 +4578,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2125713722176014500}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_91
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4607,7 +4608,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5329105191318356944}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_80
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4637,7 +4638,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4874433342991833548}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4669,7 +4670,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4708191833676504824}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_79
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4699,7 +4700,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 629774753180019922}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_143
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4729,7 +4730,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 584612287030987664}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_64
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4759,7 +4760,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8554665775882936057}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_112
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4789,7 +4790,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1498740180580029292}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_72
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4819,7 +4820,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4908021211841110117}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: creature/alexstrasza/ladyalexstrasa_bone_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
