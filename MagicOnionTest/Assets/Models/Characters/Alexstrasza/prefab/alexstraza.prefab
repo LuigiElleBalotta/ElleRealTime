@@ -402,11 +402,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2880935031867385886}
-  - component: {fileID: 5292047202464269668}
-  - component: {fileID: 7098121524543390470}
-  - component: {fileID: 7098121524543390472}
-  - component: {fileID: 7098121524543390475}
-  - component: {fileID: 7098121524543390473}
+  - component: {fileID: 3223875372947218639}
+  - component: {fileID: 526136779597358765}
+  - component: {fileID: 526136779597358755}
+  - component: {fileID: 526136779597358752}
+  - component: {fileID: 526136779597358754}
   m_Layer: 8
   m_Name: alexstraza
   m_TagString: Player
@@ -421,16 +421,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270150322584148493}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.79, y: 0.197, z: 32.23}
+  m_LocalRotation: {x: -0, y: 0.7053769, z: -0, w: 0.70883244}
+  m_LocalPosition: {x: 29.05837, y: 4.611209, z: -140.21689}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3624965019330637560}
   - {fileID: 1447660398548067521}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &5292047202464269668
+  m_LocalEulerAnglesHint: {x: 0, y: 89.72, z: 0}
+--- !u!95 &3223875372947218639
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -449,7 +449,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!54 &7098121524543390470
+--- !u!54 &526136779597358765
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -465,7 +465,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 3
---- !u!143 &7098121524543390472
+--- !u!143 &526136779597358755
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -483,7 +483,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0.08, y: 0.47, z: 0}
---- !u!136 &7098121524543390475
+--- !u!136 &526136779597358752
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -497,7 +497,7 @@ CapsuleCollider:
   m_Height: 1.17
   m_Direction: 1
   m_Center: {x: 0.08, y: 0.47, z: 0}
---- !u!114 &7098121524543390473
+--- !u!114 &526136779597358754
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
