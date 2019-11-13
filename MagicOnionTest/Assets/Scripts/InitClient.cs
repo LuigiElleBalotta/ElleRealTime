@@ -184,13 +184,9 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
         {
             if (otherPerson != null && otherPerson.name != currentPlayerName)
             {
-                /*var animator = otherPerson.GetComponent<Animator>();
-                animator.SetInteger("CharAnimState", (int)CharAnimState.Walk);*/
                 otherPerson.transform.position = Vector3.MoveTowards(otherPerson.transform.position, player.Position, 1.0f * Time.deltaTime);
                 otherPerson.transform.rotation = Quaternion.RotateTowards(otherPerson.transform.rotation, player.Rotation, Time.deltaTime);
             }
-                
-            //otherPerson.transform.SetPositionAndRotation(player.Position, player.Rotation);
         }
     }
 
