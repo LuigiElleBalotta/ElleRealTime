@@ -77,7 +77,7 @@ public class WarcraftCamera : MonoBehaviour
     [UsedImplicitly]
     private void OnValidate()
     {
-        targetCamera = GetComponent<Camera>();
+        targetCamera = Camera.main;
     }
 
     [UsedImplicitly]
