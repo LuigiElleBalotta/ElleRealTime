@@ -56,10 +56,12 @@ public class BaseUnit : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.D))//Should rotate unit
             {
+                transform.Rotate(Vector3.up, 1);
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
             }
             else if (Input.GetKey(KeyCode.A))//Should rotate unit
             {
+                transform.Rotate(Vector3.up, -1); //-1 sono i gradi di rotazione
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
             }
             else if (Input.GetKey(KeyCode.W))
