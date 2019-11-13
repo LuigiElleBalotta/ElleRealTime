@@ -29,6 +29,8 @@ namespace Assets.Scripts.Game
         SideWalkingRight = 18,
         SideRunningRight = 19,
         SideWalkingLeft = 20,
-        SideRunningLeft = 21
+        SideRunningLeft = 21,
+        ShuffleLeft = 22,
+        ShuffleRight = 23
     }
 }
