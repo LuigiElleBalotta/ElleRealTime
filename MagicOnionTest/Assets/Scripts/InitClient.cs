@@ -138,6 +138,7 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
 
     protected async void OnDestroy()
     {
+        await LeaveAsync();
         await this.streamingClient.DisposeAsync();
     }
 
@@ -168,9 +169,10 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
     {
         Debug.Log("Leave Player:" + player.Name);
 
-        if (players.TryGetValue(player.Name, out var cube))
+        if (players.TryGetValue(player.Name, out var otherPerson))
         {
-            GameObject.Destroy(cube);
+            GameObject.Destroy(otherPerson);
+            players.Remove(player.Name);
         }
     }
 
@@ -185,7 +187,7 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
                 /*var animator = otherPerson.GetComponent<Animator>();
                 animator.SetInteger("CharAnimState", (int)CharAnimState.Walk);*/
                 otherPerson.transform.position = Vector3.MoveTowards(otherPerson.transform.position, player.Position, 1.0f * Time.deltaTime);
-
+                otherPerson.transform.rotation = Quaternion.RotateTowards(otherPerson.transform.rotation, player.Rotation, Time.deltaTime);
             }
                 
             //otherPerson.transform.SetPositionAndRotation(player.Position, player.Rotation);
