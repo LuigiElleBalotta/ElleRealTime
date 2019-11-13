@@ -93,6 +93,38 @@ public class BaseUnit : MonoBehaviour
                     m_CanStand = true;
                 }
             }
+            else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+            {
+                transform.position += Vector3.left * (m_Running ? speedRun : speedWalk) * Time.deltaTime;
+                transform.Rotate(Vector3.up, -1, Space.World);
+                SetAnimState(m_Running ? CharAnimState.Run : CharAnimState.Walk);
+
+                InitClient.Instance.MoveAsync(transform.position, transform.rotation);
+            }
+            else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
+            {
+                transform.position += Vector3.left * (m_Running ? speedRun : speedWalk) * Time.deltaTime;
+                transform.Rotate(Vector3.up, 1, Space.World);
+                SetAnimState(m_Running ? CharAnimState.Run : CharAnimState.Walk);
+
+                InitClient.Instance.MoveAsync(transform.position, transform.rotation);
+            }
+            else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
+            {
+                transform.position += Vector3.right * speedWalk * Time.deltaTime;
+                transform.Rotate(Vector3.up, -1, Space.World);
+                SetAnimState(CharAnimState.WalkBackwards);
+
+                InitClient.Instance.MoveAsync(transform.position, transform.rotation);
+            }
+            else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
+            {
+                transform.position += Vector3.right * speedWalk * Time.deltaTime;
+                transform.Rotate(Vector3.up, 1, Space.World);
+                SetAnimState(CharAnimState.WalkBackwards);
+
+                InitClient.Instance.MoveAsync(transform.position, transform.rotation);
+            }
             else if (Input.GetKeyUp(KeyCode.Space))
             {
                 SetAnimState(CharAnimState.Jump);
