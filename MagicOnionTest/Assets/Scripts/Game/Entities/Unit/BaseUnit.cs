@@ -10,17 +10,18 @@ public class BaseUnit : MonoBehaviour
     Animator m_Animator;
     Rigidbody m_Rigidbody;
 
+    //Movements/Animations
     private bool m_Jump;
-
     private bool m_Walking;
     private bool m_Running = true;
     private bool m_CanStand = true;
     private CharAnimState m_OldCharAnimState = CharAnimState.Stand;
-
     public float speedWalk = 1.0f;
     public float speedRun = 2.0f;
 
-    private Transform target;
+    internal bool IsAlive = true;
+    internal Vector3 Position;
+    private bool settedTarget = false;
 
     void Awake()
     {
@@ -31,6 +32,7 @@ public class BaseUnit : MonoBehaviour
         m_Animator = gameObject.GetComponent<Animator>();
         m_Rigidbody = gameObject.GetComponent<Rigidbody>();
         m_Walking = m_Animator.GetBool("IsWalking");
+        Position = transform.position;
         Debug.Log("Start, walking = " + m_Walking);
     }
 
@@ -39,6 +41,12 @@ public class BaseUnit : MonoBehaviour
     {
         if (transform.gameObject.name == InitClient.GetCurrentPlayerName())
         {
+            if (!settedTarget)
+            {
+                var camera = Camera.main;
+                camera.GetComponent<WarcraftCamera>().Target = this;
+            }
+            
             if (Input.GetKeyUp(KeyCode.Slash))
             {
                 m_Running = !m_Running;
@@ -127,7 +135,7 @@ public class BaseUnit : MonoBehaviour
             }*/
 
         }
-        
+        Position = transform.position;
     }
 
     void SetAnimState(CharAnimState state)

@@ -11,7 +11,7 @@ namespace Client
         private static readonly char[] IntChars = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
         private static readonly char[] MinValue = { '-', '2', '1', '4', '7', '4', '8', '3', '6', '4', '8' };
 
-        public static bool IsPointerOverUI => EventSystem.current.IsPointerOverGameObject();
+        public static bool IsPointerOverUI => EventSystem.current?.IsPointerOverGameObject() ?? false;
 
         public static char[] SetSpellTimerNonAlloc(this char[] charArray, int milliseconds, out int length)
         {

@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using Client;
+using JetBrains.Annotations;
 using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
@@ -47,7 +48,7 @@ public class WarcraftCamera : MonoBehaviour
     [SerializeField, UsedImplicitly, HideInInspector]
     private Camera targetCamera;
 
-    //private Unit target;
+    private BaseUnit target;
     private Vector3 targetPosition;
     private Vector3 targetPositionVelocity;
 
@@ -60,8 +61,9 @@ public class WarcraftCamera : MonoBehaviour
 
     public Camera Camera => targetCamera;
 
-    /*public Unit Target
+    public BaseUnit Target
     {
+        get => target;
         set
         {
             target = value;
@@ -70,7 +72,7 @@ public class WarcraftCamera : MonoBehaviour
             if (target != null)
                 UpdateTargetPosition(true);
         }
-    }*/
+    }
 
     [UsedImplicitly]
     private void OnValidate()
@@ -93,7 +95,7 @@ public class WarcraftCamera : MonoBehaviour
     [UsedImplicitly]
     private void LateUpdate()
     {
-        /*if (!target)
+        if (!target)
             return;
 
         UpdateTargetPosition(false);
@@ -110,7 +112,7 @@ public class WarcraftCamera : MonoBehaviour
             // otherwise, ease behind the target if any of the directional keys are pressed
             else if (!Mathf.Approximately(Input.GetAxis("Vertical"), 0) || !Mathf.Approximately(Input.GetAxis("Horizontal"), 0))
             {
-                if (target.IsAlive && input.IsPlayerInputAllowed)
+                if (target.IsAlive/* TODO: NEED IT? => && input.IsPlayerInputAllowed*/)
                 {
                     float targetRotationAngle = target.transform.eulerAngles.y;
                     float currentRotationAngle = transform.eulerAngles.y;
@@ -162,12 +164,12 @@ public class WarcraftCamera : MonoBehaviour
         position = targetPosition - (rotation * Vector3.forward * currentDistance + vTargetOffset);
 
         transform.rotation = rotation;
-        transform.position = position;*/
+        transform.position = position;
     }
 
     private void UpdateTargetPosition(bool instantly)
     {
-        //targetPosition = instantly ? target.Position : Vector3.SmoothDamp(targetPosition, target.Position, ref targetPositionVelocity, targetSmoothTime);
+        targetPosition = instantly ? target.Position : Vector3.SmoothDamp(targetPosition, target.Position, ref targetPositionVelocity, targetSmoothTime);
     }
 
     private static float ClampAngle(float angle, float min, float max)
