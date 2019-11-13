@@ -136,7 +136,8 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
 
     protected async void OnDestroy()
     {
-        await LeaveAsync();
+        //It seems it doesn't let the client close.
+        //await LeaveAsync();
         await this.streamingClient.DisposeAsync();
     }
 
@@ -183,7 +184,8 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
             if (otherPerson != null && otherPerson.name != currentPlayerName)
             {
                 otherPerson.transform.position = Vector3.MoveTowards(otherPerson.transform.position, player.Position, 1.0f * Time.deltaTime);
-                otherPerson.transform.rotation = Quaternion.RotateTowards(otherPerson.transform.rotation, player.Rotation, Time.deltaTime);
+                otherPerson.transform.Rotate(Vector3.up, Quaternion.Angle(otherPerson.transform.rotation, player.Rotation), Space.World);
+                //otherPerson.transform.rotation = Quaternion.RotateTowards(otherPerson.transform.rotation, player.Rotation, 1.0f * Time.deltaTime);
             }
         }
     }
