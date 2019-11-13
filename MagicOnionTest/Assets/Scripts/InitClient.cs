@@ -58,9 +58,7 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
 
     private async void InitializeClient()
     {
-        System.Random rnd = new System.Random();
-        int randomId = rnd.Next(1, 20);
-        currentPlayerName = "Elle_" + randomId;
+        currentPlayerName = "Elle_" + Guid.NewGuid();
 
         // Initialize the Hub
         this.channel = new Channel("localhost", 12345, ChannelCredentials.Insecure);
