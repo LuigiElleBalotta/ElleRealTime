@@ -55,11 +55,39 @@ namespace ElleRealTime
                             if (parameters.Length == 3)
                             {
                                 int id = Login.CreateAccount(parameters[1], parameters[2]);
-                                Logger.Success($"Successfully created the account \"{parameters[1]}\" with ID: {id}!");
+                                if (id > 0)
+                                {
+                                    Logger.Success($"Successfully created the account \"{parameters[1]}\" with ID: {id}!");
+                                }
+                                else
+                                {
+                                    Logger.Error("An error occurred while creating the account!");
+                                }
                             }
                             else
                             {
                                 Logger.Error("Syntax error: .createaccount {username} {password}");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.Error(ex.InnerException?.Message ?? ex.Message, true);
+                        }
+                    }
+
+                    else if (line.StartsWith(".modifypassword"))
+                    {
+                        try
+                        {
+                            string[] parameters = line.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                            if (parameters.Length == 3)
+                            {
+                                Login.ModifyPassword(parameters[1], parameters[2]);
+                                Logger.Success($"Successfully modified the account \"{parameters[1]}\" with a new password!");
+                            }
+                            else
+                            {
+                                Logger.Error("Syntax error: .modifypassword {username} {newpassword}");
                             }
                         }
                         catch (Exception ex)

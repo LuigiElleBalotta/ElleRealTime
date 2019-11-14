@@ -7,5 +7,6 @@ namespace ElleRealTimeBaseDAO.Interfaces
     {
         int CheckLogin(string username, string hashedPassword, DbTransaction trans);
         int CreateAccount(string username, string hashedPassword, DbTransaction trans);
+        void ModifyPassword(string username, string hashedPassword, DbTransaction trans);
     }
 }

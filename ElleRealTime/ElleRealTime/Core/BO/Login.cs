@@ -18,9 +18,10 @@ namespace ElleRealTime.Core.BO
         public int CheckLogin(string username, string password)
         {
             ILogin dao = DAOFactory.Create<ILogin>();
-
             var hashedPassword = Shared.BO.Utils.GenerateHashPassword(username, password);
-            return dao.CheckLogin(username, hashedPassword, null);
+            int idaccount = -1;
+            idaccount = dao.CheckLogin(username, hashedPassword, null);
+            return idaccount;
         }
 
         public static int CreateAccount(string username, string password)
@@ -28,6 +29,13 @@ namespace ElleRealTime.Core.BO
             ILogin dao = DAOFactory.Create<ILogin>();
             string hashedPassword = Shared.BO.Utils.GenerateHashPassword(username, password);
             return dao.CreateAccount(username, hashedPassword, null);
+        }
+
+        public static void ModifyPassword(string username, string password)
+        {
+            ILogin dao = DAOFactory.Create<ILogin>();
+            string hashedPassword = Shared.BO.Utils.GenerateHashPassword(username, password);
+            dao.ModifyPassword(username, hashedPassword, null);
         }
     }
 }

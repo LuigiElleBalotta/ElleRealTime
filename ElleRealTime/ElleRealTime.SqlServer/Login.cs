@@ -30,5 +30,10 @@ namespace ElleRealTime.SqlServer
             return id;
 
         }
+
+        public void ModifyPassword(string username, string hashedPassword, DbTransaction trans)
+        {
+            ElleRealTimeBaseDAO.Base.Login.ModifyPassword(this, username, hashedPassword, trans);
+        }
     }
 }
