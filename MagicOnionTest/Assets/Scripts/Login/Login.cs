@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Threading.Tasks;
 using ElleRealTimeStd.Shared.Test.Interfaces.Service;
 using Grpc.Core;
 using MagicOnion.Client;
@@ -6,9 +7,9 @@ using UnityEngine;
 
 public class Login : MonoBehaviour
 {
-    //Player Prefs
-    /*private string u = "username";
-    private string p = "password";*/
+    public static Login Instance { get { return _instance; } }
+    private static Login _instance;
+    private bool IsLogged = false;
 
     private string usernameString = string.Empty;
     private string passwordString = string.Empty;
@@ -48,35 +49,27 @@ public class Login : MonoBehaviour
 
         if (GUI.Button(new Rect(Screen.width / 2, 4 * Screen.height / 5, Screen.width / 8, Screen.height / 8), "Login"))
         {
-            
-            NotLoggedClient.formUsername = usernameString;
-            NotLoggedClient.formPassword = passwordString;
-            int result = NotLoggedClient.PlayerID;
-            NotLoggedClient.CanConnect = true;
-
-            do
+            if (!IsLogged)
             {
-                result = NotLoggedClient.PlayerID;
-            } while (result == -1);
-            
-            if (result > 0)
-            {
-                Debug.Log("Welcome");
-                //Change scene.
+                NotLoggedClient c = new NotLoggedClient();
+                var task = Task.Run(async () => await c.CheckLogin(usernameString, passwordString));
             }
-            else
-            {
-                Debug.Log("Wrong username or password.");
-            }
-            /*
-             * if(Password is correct)
-             *      debug.log("LoggedIn, switch scene)
-             * else
-             *      retry
-             */
         }
 
         GUI.Label(new Rect(Screen.width/3, 35*Screen.height/100, Screen.width/5, Screen.height/8), "Username");
         GUI.Label(new Rect(Screen.width/3, 62*Screen.height/100, Screen.width/5, Screen.height/8), "Password");
+    }
+
+    public void HandleAfterLogin( bool isLogged, int accountId )
+    {
+        if (isLogged)
+        {
+            Debug.Log($"Welcome, {accountId}");
+            //Change scene with accountId
+        }
+        else
+        {
+            Debug.Log("Wrong username or password.");
+        }
     }
 }

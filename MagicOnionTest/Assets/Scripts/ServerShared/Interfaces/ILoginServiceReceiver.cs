@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface ILoginServiceReceiver
 {
-    void OnJoin();
+    void OnJoin(int accountId);
 }
 

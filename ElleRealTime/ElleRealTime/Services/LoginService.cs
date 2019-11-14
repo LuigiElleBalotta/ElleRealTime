@@ -7,16 +7,24 @@ namespace ElleRealTime.Services
 {
     public class LoginService : StreamingHubBase<ILoginService, ILoginServiceReceiver>, ILoginService
     {
+        IGroup room;
+
         public async Task LeaveAsync()
         {
             throw new System.NotImplementedException();
         }
 
-        public async Task<int> JoinAsync(string username, string password)
+        public async Task<int> JoinAsync(string roomName, string username, string password)
         {
-            Program.Logger.Info($"Received {username} & {password}");
+            Logger.Info($"Received {username} & {password}");
+
+            (room) = await Group.AddAsync(roomName);
+
             var bo = new Login();
             int accountId = bo.CheckLogin(username, password);
+
+            Broadcast(room).OnJoin(accountId);
+
             return accountId;
         }
     }

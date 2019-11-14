@@ -9,102 +9,66 @@ using UnityEngine;
 public class NotLoggedClient : MonoBehaviour, ILoginServiceReceiver
 {
     public static NotLoggedClient Instance { get { return _instance; } }
+    private static NotLoggedClient _instance;
+
     private Channel channel;
     private ILoginService streamingClient;
-    public static string formUsername = "";
-    public static string formPassword = "";
+    private string RoomName;
 
-    private bool isJoin;
-    private bool isSelfDisConnected;
-
-    public static bool CanConnect = false;
-    public static int PlayerID = -1;
-
-    private static NotLoggedClient _instance;
+    public NotLoggedClient()
+    {
+        
+    }
 
     void Awake()
     {
         _instance = this;
     }
+
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (CanConnect)
-        {
-            PlayerID = -1;
-            try
-            {
-                PlayerID = this.InitializeClient().Result;
-                LeaveAsync();
-                DisposeAsync();
-            }
-            catch (RpcException ex)
-            {
-                Debug.Log("Cannot connect to a server.");
-            }
-            finally
-            {
-                Debug.Log("Initialized.");
-                
-                CanConnect = false;
-            }
-        }
-    }
-
-    private async Task<int> InitializeClient()
-    {
-        // Initialize the Hub
-        this.channel = new Channel("localhost", 12345, ChannelCredentials.Insecure);
-        int playerId = await ConnectAsync(channel, "test");
-        this.RegisterDisconnectEvent(streamingClient);
-        return playerId;
-    }
-
-    private async Task<int> ConnectAsync(Channel grpcChannel, string roomName)
-    {
-        this.streamingClient = StreamingHubClient.Connect<ILoginService, ILoginServiceReceiver>(grpcChannel, this);
-
-        var playerId = await this.streamingClient.JoinAsync(formUsername, formPassword);
-
-        return playerId;
-    }
-
-    private async void RegisterDisconnectEvent(ILoginService streamingClient)
-    {
         try
         {
-            // you can wait disconnected event
-            await streamingClient.WaitForDisconnect();
+
+            this.InitializeClient();
+        }
+        catch (RpcException ex)
+        {
+            Debug.Log("Cannot connect to a server.");
         }
         finally
         {
-            // try-to-reconnect? logging event? close? etc...
-            Debug.Log("disconnected server.");
-
-            if (this.isSelfDisConnected)
-            {
-                // there is no particular meaning
-                await Task.Delay(2000);
-
-                // reconnect
-                this.ReconnectServer();
-            }
+            Debug.Log("Initialized.");
         }
     }
-
-    private void ReconnectServer()
+    
+    private async void InitializeClient()
     {
-        this.streamingClient = StreamingHubClient.Connect<ILoginService, ILoginServiceReceiver>(this.channel, this);
-        this.RegisterDisconnectEvent(streamingClient);
-        Debug.Log("Reconnected server.");
+        // Initialize the Hub
+        this.channel = new Channel("localhost", 12345, ChannelCredentials.Insecure);
+        RoomName = Guid.NewGuid().ToString();
+        await ConnectAsync(channel);
+    }
 
-        this.isSelfDisConnected = false;
+    private async Task ConnectAsync(Channel grpcChannel)
+    {
+        this.streamingClient = StreamingHubClient.Connect<ILoginService, ILoginServiceReceiver>(grpcChannel, this);
+    }
+
+    public async Task<int> CheckLogin(string formUsername, string formPassword)
+    {
+        Debug.Log($"Sending username: \"{formUsername}\" AND password \"{formPassword}\".");
+        int playerId = await this.streamingClient.JoinAsync(RoomName, formUsername, formPassword);
+
+        Debug.Log($"CheckLogin, playerId: {playerId}.");
+
+        return playerId;
+    }
+
+    public async Task Disconnect()
+    {
+        await this.streamingClient.DisposeAsync();
     }
 
     // methods send to server.
@@ -133,9 +97,17 @@ public class NotLoggedClient : MonoBehaviour, ILoginServiceReceiver
         return streamingClient.WaitForDisconnect();
     }
 
-    void ILoginServiceReceiver.OnJoin()
+    void ILoginServiceReceiver.OnJoin(int accountId)
     {
-        
+        Debug.Log($"Received OnJoin, playerId: {accountId}.");
+        if (accountId > 0)
+        {
+            Login.Instance.HandleAfterLogin(true, accountId);
+        }
+        else
+        {
+            Login.Instance.HandleAfterLogin(false, -1);
+        }
     }
 
 }
