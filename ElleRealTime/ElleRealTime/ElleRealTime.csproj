@@ -22,6 +22,7 @@
     <ProjectReference Include="..\ElleFramework.Utils\ElleFramework.Utils.csproj" />
     <ProjectReference Include="..\ElleFramework\ElleFramework.Database.csproj" />
     <ProjectReference Include="..\ElleRealTime.Shared\ElleRealTime.Shared.csproj" />
+    <ProjectReference Include="..\ElleRealTimeBaseDAO\ElleRealTimeBaseDAO.csproj" />
   </ItemGroup>
 
 </Project>
