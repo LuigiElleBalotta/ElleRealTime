@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using Assets.Scripts.Game;
 using ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player;
 using MagicOnion;
 using UnityEngine;
