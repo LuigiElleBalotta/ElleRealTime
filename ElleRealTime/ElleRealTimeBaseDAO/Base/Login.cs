@@ -32,7 +32,7 @@ namespace ElleRealTimeBaseDAO.Base
             };
             dao.ExecuteNonQuery("UPDATE accounts " +
                                 $"SET Password = @{nameof(Account.Password)} " +
-                                $"WHERE Username = @{nameof(Account.Username)}", prms, trans);
+                                $"WHERE LOWER(Username) = LOWER(@{nameof(Account.Username)})", prms, trans);
         }
     }
 }
