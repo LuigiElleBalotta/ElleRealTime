@@ -54,6 +54,42 @@ public class BaseUnit : MonoBehaviour
                 m_Running = !m_Running;
                 Debug.Log($"Running: " + m_Running);
             }
+            //Move forward + turn left
+            else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+            {
+                transform.position += transform.TransformDirection(Vector3.forward * (m_Running ? speedRun : speedWalk) * Time.deltaTime);
+                transform.Rotate(Vector3.up, -1, Space.Self);
+                SetAnimState(m_Running ? CharAnimState.Run : CharAnimState.Walk);
+
+                InitClient.Instance.MoveAsync(transform.position, transform.rotation);
+            }
+            //Move forward + turn right
+            else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
+            {
+                transform.position += transform.TransformDirection(Vector3.forward * (m_Running ? speedRun : speedWalk) * Time.deltaTime);
+                transform.Rotate(Vector3.up, 1, Space.Self);
+                SetAnimState(m_Running ? CharAnimState.Run : CharAnimState.Walk);
+
+                InitClient.Instance.MoveAsync(transform.position, transform.rotation);
+            }
+            //Move backward + turn left
+            else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
+            {
+                transform.position += transform.TransformDirection(Vector3.back * speedWalk * Time.deltaTime);
+                transform.Rotate(Vector3.up, -1, Space.Self);
+                SetAnimState(CharAnimState.WalkBackwards);
+
+                InitClient.Instance.MoveAsync(transform.position, transform.rotation);
+            }
+            //Move backward + turn right
+            else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
+            {
+                transform.position += transform.TransformDirection(Vector3.back * speedWalk * Time.deltaTime);
+                transform.Rotate(Vector3.up, 1, Space.Self);
+                SetAnimState(CharAnimState.WalkBackwards);
+
+                InitClient.Instance.MoveAsync(transform.position, transform.rotation);
+            }
             //Turn right
             else if (Input.GetKey(KeyCode.D))//Should rotate unit
             {
@@ -71,7 +107,7 @@ public class BaseUnit : MonoBehaviour
             //Move forward
             else if (Input.GetKey(KeyCode.W))
             {
-                transform.position += transform.forward * ( m_Running ? speedRun : speedWalk ) * Time.deltaTime;
+                transform.position += transform.TransformDirection(Vector3.forward * ( m_Running ? speedRun : speedWalk ) * Time.deltaTime);
                 SetAnimState(m_Running ? CharAnimState.Run : CharAnimState.Walk);
 
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
@@ -79,7 +115,7 @@ public class BaseUnit : MonoBehaviour
             //Move backward
             else if (Input.GetKey(KeyCode.S))
             {
-                transform.position += -transform.forward * speedWalk * Time.deltaTime;
+                transform.position += transform.TransformDirection(Vector3.back * speedWalk * Time.deltaTime);
                 SetAnimState(CharAnimState.WalkBackwards);
 
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
@@ -97,42 +133,6 @@ public class BaseUnit : MonoBehaviour
                     SetAnimState(CharAnimState.SitGroundUp);
                     m_CanStand = true;
                 }
-            }
-            //Move forward + turn left
-            else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
-            {
-                transform.position += Vector3.forward * (m_Running ? speedRun : speedWalk) * Time.deltaTime;
-                transform.Rotate(Vector3.up, -1, Space.Self);
-                SetAnimState(m_Running ? CharAnimState.Run : CharAnimState.Walk);
-
-                InitClient.Instance.MoveAsync(transform.position, transform.rotation);
-            }
-            //Move forward + turn right
-            else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
-            {
-                transform.position += Vector3.forward * (m_Running ? speedRun : speedWalk) * Time.deltaTime;
-                transform.Rotate(Vector3.up, 1, Space.Self);
-                SetAnimState(m_Running ? CharAnimState.Run : CharAnimState.Walk);
-
-                InitClient.Instance.MoveAsync(transform.position, transform.rotation);
-            }
-            //Move backward + turn left
-            else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
-            {
-                transform.position += Vector3.back * speedWalk * Time.deltaTime;
-                transform.Rotate(Vector3.up, -1, Space.Self);
-                SetAnimState(CharAnimState.WalkBackwards);
-
-                InitClient.Instance.MoveAsync(transform.position, transform.rotation);
-            }
-            //Move backward + turn right
-            else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
-            {
-                transform.position += Vector3.back * speedWalk * Time.deltaTime;
-                transform.Rotate(Vector3.up, 1, Space.Self);
-                SetAnimState(CharAnimState.WalkBackwards);
-
-                InitClient.Instance.MoveAsync(transform.position, transform.rotation);
             }
             //Jump
             else if (Input.GetKeyUp(KeyCode.Space))
