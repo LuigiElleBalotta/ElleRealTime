@@ -40,7 +40,17 @@ namespace ElleRealTime
 
             server.Start();
 
-            Console.ReadLine();
+            string line = "";
+            do
+            {
+                line = Console.ReadLine();
+                if (line != "quit")
+                {
+                    Logger.Success(line);
+                }
+
+            } while (line != "quit");
+
         }
     }
 }

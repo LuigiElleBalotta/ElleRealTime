@@ -32,6 +32,14 @@ namespace ElleRealTime.Core.Logging
             Console.ForegroundColor = oldColor;
         }
 
+        public void Success(string message)
+        {
+            var oldColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Green;
+            LoggerObj.Info(message);
+            Console.ForegroundColor = oldColor;
+        }
+
         public void Error(string message, bool close = false)
         {
             var oldColor = Console.ForegroundColor;
