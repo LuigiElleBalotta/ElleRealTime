@@ -7,7 +7,7 @@ namespace ElleRealTime.SqlServer
 {
     public class Login : ElleRealTimeDbDAO, ILogin
     {
-        public UnaryResult<int> CheckLogin(string username, string hashedPassword, DbTransaction trans)
+        public int CheckLogin(string username, string hashedPassword, DbTransaction trans)
         {
             return ElleRealTimeBaseDAO.Base.Login.CheckLogin(this, username, hashedPassword, trans);
         }

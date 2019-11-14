@@ -1,18 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Threading.Tasks;
 using ElleRealTime.Core.BO;
 using ElleRealTimeStd.Shared.Test.Interfaces.Service;
-using MagicOnion;
-using MagicOnion.Server;
+using MagicOnion.Server.Hubs;
 
 namespace ElleRealTime.Services
 {
-    public class LoginService : ServiceBase<ILoginService>, ILoginService
+    public class LoginService : StreamingHubBase<ILoginService, ILoginServiceReceiver>, ILoginService
     {
-        public async UnaryResult<int> CheckLogin(string username, string password)
+        public async Task LeaveAsync()
         {
-            return await new Login().CheckLogin(username, password);
+            throw new System.NotImplementedException();
+        }
+
+        public async Task<int> JoinAsync(string username, string password)
+        {
+            Program.Logger.Info($"Received {username} & {password}");
+            var bo = new Login();
+            int accountId = bo.CheckLogin(username, password);
+            return accountId;
         }
     }
 }

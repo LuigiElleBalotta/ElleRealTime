@@ -15,7 +15,7 @@ namespace ElleRealTime.Core.BO
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public UnaryResult<int> CheckLogin(string username, string password)
+        public int CheckLogin(string username, string password)
         {
             ILogin dao = DAOFactory.Create<ILogin>();
 

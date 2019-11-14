@@ -14,7 +14,7 @@ namespace Assets.Scripts
             CompositeResolver.RegisterAndSetAsDefault
             (
                 MessagePack.Resolvers.GeneratedResolver.Instance,
-
+                
                 MagicOnion.Resolvers.MagicOnionResolver.Instance,
                 BuiltinResolver.Instance,
                 PrimitiveObjectResolver.Instance,

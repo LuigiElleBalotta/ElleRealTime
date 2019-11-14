@@ -9,7 +9,7 @@ namespace ElleRealTimeBaseDAO.Base
 {
     public static class Login
     {
-        public static UnaryResult<int> CheckLogin(ElleRealTimeDbDAO dao, string username, string hashedPassword, DbTransaction trans)
+        public static int CheckLogin(ElleRealTimeDbDAO dao, string username, string hashedPassword, DbTransaction trans)
         {
             Hashtable prms = new Hashtable
             {
@@ -18,7 +18,7 @@ namespace ElleRealTimeBaseDAO.Base
             };
 
             //return dao.ExecuteScalar<int>("SELECT ID FROM users WHERE Username = @Username AND Password = @Password", prms, trans);
-            return new UnaryResult<int>(1);
+            return 1;
         }
     }
 }
