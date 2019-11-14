@@ -25,7 +25,7 @@
     "Type": 1,
     "Host": "localhost\\SQLEXPRESS",
     "User": "sa",
-    "Password": "Smemoranda2012!",
+    "Password": "smemo2012",
     "Name": "ellerealtime",
     "Port": 1433,
     "DAOAssembly": "ElleRealTime.SqlServer",

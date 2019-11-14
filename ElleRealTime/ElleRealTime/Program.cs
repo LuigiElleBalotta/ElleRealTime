@@ -2,6 +2,7 @@
 using System.Data.Common;
 using System.Data.SqlClient;
 using ElleFramework.Utils;
+using ElleRealTime.Core.BO;
 using ElleRealTime.Core.Configuration;
 using ElleRealTime.Core.Logging;
 using ElleRealTime.Shared.BO;
@@ -46,7 +47,26 @@ namespace ElleRealTime
                 line = Console.ReadLine();
                 if (line != "quit")
                 {
-                    Logger.Success(line);
+                    if (line.StartsWith(".createaccount"))
+                    {
+                        try
+                        {
+                            string[] parameters = line.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                            if (parameters.Length == 3)
+                            {
+                                int id = Login.CreateAccount(parameters[1], parameters[2]);
+                                Logger.Success($"Successfully created the account \"{parameters[1]}\" with ID: {id}!");
+                            }
+                            else
+                            {
+                                Logger.Error("Syntax error: .createaccount {username} {password}");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.Error(ex.InnerException?.Message ?? ex.Message, true);
+                        }
+                    }
                 }
 
             } while (line != "quit");

@@ -22,5 +22,12 @@ namespace ElleRealTime.Core.BO
             var hashedPassword = Shared.BO.Utils.GenerateHashPassword(username, password);
             return dao.CheckLogin(username, hashedPassword, null);
         }
+
+        public static int CreateAccount(string username, string password)
+        {
+            ILogin dao = DAOFactory.Create<ILogin>();
+            string hashedPassword = Shared.BO.Utils.GenerateHashPassword(username, password);
+            return dao.CreateAccount(username, hashedPassword, null);
+        }
     }
 }

@@ -21,7 +21,9 @@
   <ItemGroup>
     <ProjectReference Include="..\ElleFramework.Utils\ElleFramework.Utils.csproj" />
     <ProjectReference Include="..\ElleFramework\ElleFramework.Database.csproj" />
+    <ProjectReference Include="..\ElleRealTime.MySql\ElleRealTime.MySql.csproj" />
     <ProjectReference Include="..\ElleRealTime.Shared\ElleRealTime.Shared.csproj" />
+    <ProjectReference Include="..\ElleRealTime.SqlServer\ElleRealTime.SqlServer.csproj" />
     <ProjectReference Include="..\ElleRealTimeBaseDAO\ElleRealTimeBaseDAO.csproj" />
   </ItemGroup>
 
