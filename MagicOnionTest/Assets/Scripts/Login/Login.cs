@@ -4,6 +4,7 @@ using ElleRealTimeStd.Shared.Test.Interfaces.Service;
 using Grpc.Core;
 using MagicOnion.Client;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Login : MonoBehaviour
 {
@@ -60,12 +61,13 @@ public class Login : MonoBehaviour
         GUI.Label(new Rect(Screen.width/3, 62*Screen.height/100, Screen.width/5, Screen.height/8), "Password");
     }
 
-    public void HandleAfterLogin( bool isLogged, int accountId )
+    public static void HandleAfterLogin( bool isLogged, int accountId )
     {
         if (isLogged)
         {
             Debug.Log($"Welcome, {accountId}");
             //Change scene with accountId
+            SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
         }
         else
         {

@@ -153,11 +153,11 @@ public class NotLoggedClient : /*MonoBehaviour, */ILoginServiceReceiver
         Debug.Log($"Received OnJoin, playerId: {accountId}.");
         if (accountId > 0)
         {
-            Login.Instance.HandleAfterLogin(true, accountId);
+            Login.HandleAfterLogin(true, accountId);
         }
         else
         {
-            Login.Instance.HandleAfterLogin(false, -1);
+            Login.HandleAfterLogin(false, -1);
         }
     }
 
