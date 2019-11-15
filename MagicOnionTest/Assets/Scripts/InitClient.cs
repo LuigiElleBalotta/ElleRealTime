@@ -70,13 +70,13 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
     {
         this.streamingClient = StreamingHubClient.Connect<IGamingHub, IGamingHubReceiver>(grpcChannel, this);
 
-        var roomPlayers = await this.streamingClient.JoinAsync(roomName, playerName, /*Vector3.zero*/ new Vector3(11.13949f, 4.719501f, -116.671f), Quaternion.identity);
+        var roomPlayers = await this.streamingClient.JoinAsync(roomName, Client.GlobalVariables.CurrentAccountID);
         foreach (var player in roomPlayers)
         {
             (this as IGamingHubReceiver).OnJoin(player);
         }
 
-        return players[playerName];
+        return players[Client.GlobalVariables.CurrentAccountID.ToString()];
     }
 
     private async void RegisterDisconnectEvent(IGamingHub streamingClient)
@@ -126,6 +126,11 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
     public Task SendAnimationAsync(CharAnimState state)
     {
         return streamingClient.SendAnimStateAsync((int)state);
+    }
+
+    public Task SavePlayer()
+    {
+        return streamingClient.SavePlayerAsync();
     }
 
     // dispose client-connection before channel.ShutDownAsync is important!
@@ -202,5 +207,11 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
                 animator.SetInteger("CharAnimState", state);
             }
         }
+    }
+
+    void IGamingHubReceiver.OnPlayerInfoSaved()
+    {
+        //ToDO: close the Pause menu
+        Debug.Log("Successfully saved!");
     }
 }

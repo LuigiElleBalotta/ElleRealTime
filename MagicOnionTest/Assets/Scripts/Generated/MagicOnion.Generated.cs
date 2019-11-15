@@ -81,14 +81,13 @@ namespace MagicOnion.Resolvers
 
         static MagicOnionResolverGetFormatterHelper()
         {
-            lookup = new global::System.Collections.Generic.Dictionary<Type, int>(6)
+            lookup = new global::System.Collections.Generic.Dictionary<Type, int>(5)
             {
                 {typeof(global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player.Player[]), 0 },
                 {typeof(global::MagicOnion.DynamicArgumentTuple<global::UnityEngine.Vector3, global::UnityEngine.Quaternion>), 1 },
                 {typeof(global::MagicOnion.DynamicArgumentTuple<int, int>), 2 },
                 {typeof(global::MagicOnion.DynamicArgumentTuple<string, int>), 3 },
-                {typeof(global::MagicOnion.DynamicArgumentTuple<string, string, global::UnityEngine.Vector3, global::UnityEngine.Quaternion>), 4 },
-                {typeof(global::MagicOnion.DynamicArgumentTuple<string, string, string>), 5 },
+                {typeof(global::MagicOnion.DynamicArgumentTuple<string, string, string>), 4 },
             };
         }
 
@@ -106,8 +105,7 @@ namespace MagicOnion.Resolvers
                 case 1: return new global::MagicOnion.DynamicArgumentTupleFormatter<global::UnityEngine.Vector3, global::UnityEngine.Quaternion>(default(global::UnityEngine.Vector3), default(global::UnityEngine.Quaternion));
                 case 2: return new global::MagicOnion.DynamicArgumentTupleFormatter<int, int>(default(int), default(int));
                 case 3: return new global::MagicOnion.DynamicArgumentTupleFormatter<string, int>(default(string), default(int));
-                case 4: return new global::MagicOnion.DynamicArgumentTupleFormatter<string, string, global::UnityEngine.Vector3, global::UnityEngine.Quaternion>(default(string), default(string), default(global::UnityEngine.Vector3), default(global::UnityEngine.Quaternion));
-                case 5: return new global::MagicOnion.DynamicArgumentTupleFormatter<string, string, string>(default(string), default(string), default(string));
+                case 4: return new global::MagicOnion.DynamicArgumentTupleFormatter<string, string, string>(default(string), default(string), default(string));
                 default: return null;
             }
         }
@@ -386,6 +384,11 @@ namespace ElleRealTimeStd.Shared.Test.Interfaces.StreamingHub {
                     var result = LZ4MessagePackSerializer.Deserialize<DynamicArgumentTuple<string, int>>(data, resolver);
                     receiver.OnAnimStateChange(result.Item1, result.Item2); break;
                 }
+                case -660277788: // OnPlayerInfoSaved
+                {
+                    var result = LZ4MessagePackSerializer.Deserialize<Nil>(data, resolver);
+                    receiver.OnPlayerInfoSaved(); break;
+                }
                 default:
                     break;
             }
@@ -419,14 +422,20 @@ namespace ElleRealTimeStd.Shared.Test.Interfaces.StreamingHub {
                     ((TaskCompletionSource<Nil>)taskCompletionSource).TrySetResult(result);
                     break;
                 }
+                case -700463433: // SavePlayerAsync
+                {
+                    var result = LZ4MessagePackSerializer.Deserialize<Nil>(data, resolver);
+                    ((TaskCompletionSource<Nil>)taskCompletionSource).TrySetResult(result);
+                    break;
+                }
                 default:
                     break;
             }
         }
    
-        public global::System.Threading.Tasks.Task<global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player.Player[]> JoinAsync(string roomName, string userName, global::UnityEngine.Vector3 position, global::UnityEngine.Quaternion rotation)
+        public global::System.Threading.Tasks.Task<global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player.Player[]> JoinAsync(string roomName, int accountId)
         {
-            return WriteMessageWithResponseAsync<DynamicArgumentTuple<string, string, global::UnityEngine.Vector3, global::UnityEngine.Quaternion>, global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player.Player[]> (-733403293, new DynamicArgumentTuple<string, string, global::UnityEngine.Vector3, global::UnityEngine.Quaternion>(roomName, userName, position, rotation));
+            return WriteMessageWithResponseAsync<DynamicArgumentTuple<string, int>, global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player.Player[]> (-733403293, new DynamicArgumentTuple<string, int>(roomName, accountId));
         }
 
         public global::System.Threading.Tasks.Task LeaveAsync()
@@ -442,6 +451,11 @@ namespace ElleRealTimeStd.Shared.Test.Interfaces.StreamingHub {
         public global::System.Threading.Tasks.Task SendAnimStateAsync(int state)
         {
             return WriteMessageWithResponseAsync<int, Nil>(147298429, state);
+        }
+
+        public global::System.Threading.Tasks.Task SavePlayerAsync()
+        {
+            return WriteMessageWithResponseAsync<Nil, Nil>(-700463433, Nil.Default);
         }
 
 
@@ -469,9 +483,9 @@ namespace ElleRealTimeStd.Shared.Test.Interfaces.StreamingHub {
                 throw new NotSupportedException();
             }
 
-            public global::System.Threading.Tasks.Task<global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player.Player[]> JoinAsync(string roomName, string userName, global::UnityEngine.Vector3 position, global::UnityEngine.Quaternion rotation)
+            public global::System.Threading.Tasks.Task<global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player.Player[]> JoinAsync(string roomName, int accountId)
             {
-                return __parent.WriteMessageAsyncFireAndForget<DynamicArgumentTuple<string, string, global::UnityEngine.Vector3, global::UnityEngine.Quaternion>, global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player.Player[]> (-733403293, new DynamicArgumentTuple<string, string, global::UnityEngine.Vector3, global::UnityEngine.Quaternion>(roomName, userName, position, rotation));
+                return __parent.WriteMessageAsyncFireAndForget<DynamicArgumentTuple<string, int>, global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player.Player[]> (-733403293, new DynamicArgumentTuple<string, int>(roomName, accountId));
             }
 
             public global::System.Threading.Tasks.Task LeaveAsync()
@@ -487,6 +501,11 @@ namespace ElleRealTimeStd.Shared.Test.Interfaces.StreamingHub {
             public global::System.Threading.Tasks.Task SendAnimStateAsync(int state)
             {
                 return __parent.WriteMessageAsync<int>(147298429, state);
+            }
+
+            public global::System.Threading.Tasks.Task SavePlayerAsync()
+            {
+                return __parent.WriteMessageAsync<Nil>(-700463433, Nil.Default);
             }
 
         }
