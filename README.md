@@ -3,8 +3,16 @@ Unity project using [MagicOnion](https://github.com/Cysharp/MagicOnion/), some W
 
 Supports multiplayer and realtime engine.
 
+## What works
+- Registration via server command ( .createaccount username password )
+- Login
+- Warcraft Camera
+- Player movement
+- Player Info save (position) + load at next login
+
 ## Links
 [MagicOnion](https://github.com/Cysharp/MagicOnion/): Unified Realtime/API Engine for .NET Core and Unity.
+
 
 [Warcraft Arena Unity](https://github.com/Reinisch/Warcraft-Arena-Unity/) some models & scripts
 
