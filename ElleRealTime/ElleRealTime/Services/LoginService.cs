@@ -23,6 +23,8 @@ namespace ElleRealTime.Services
             var bo = new Login();
             int accountId = bo.CheckLogin(username, password);
 
+            Program.Logger.Info($"Sending ID: {accountId}");
+
             Broadcast(room).OnJoin(accountId);
 
             return accountId;

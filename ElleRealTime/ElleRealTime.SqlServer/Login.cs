@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Data.Common;
+using ElleRealTime.Shared.DBEntities.Accounts;
 using ElleRealTimeBaseDAO;
 using ElleRealTimeBaseDAO.Interfaces;
-using ElleRealTimeStd.Shared.Entities.Accounts;
 using MagicOnion;
 
 namespace ElleRealTime.SqlServer

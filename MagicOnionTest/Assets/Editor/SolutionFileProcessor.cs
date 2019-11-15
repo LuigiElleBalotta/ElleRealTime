@@ -14,14 +14,13 @@ public class SolutionFileProcessor : AssetPostprocessor
     {
         // Automatically include ProjectFiles into SolutionFile
 
-        var newContent = AddProject(
+        var newContent = "";/*AddProject(
             content: content,
             ProjectTypeGuidConsoleApp,
             projectGuid: "{053476FC-B8B2-4A14-AED2-3733DFD5DFC3}",
             projectName: "ElleRealTime",
-            projectPath: "..\\ElleRealTime\\ElleRealTime.csproj");
-
-
+            projectPath: "..\\ElleRealTime\\ElleRealTime.csproj");*/
+        
         return newContent;
     }
 

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Text;
-using ElleRealTimeStd.Shared.Entities.Accounts;
+using ElleRealTime.Shared.DBEntities.Accounts;
 using MagicOnion;
 
 namespace ElleRealTimeBaseDAO.Base

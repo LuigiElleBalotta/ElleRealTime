@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Text;
+using ElleRealTime.Shared.DBEntities.Accounts;
 using ElleRealTimeBaseDAO;
 using ElleRealTimeBaseDAO.Interfaces;
-using ElleRealTimeStd.Shared.Entities.Accounts;
 
 namespace ElleRealTime.MySql
 {

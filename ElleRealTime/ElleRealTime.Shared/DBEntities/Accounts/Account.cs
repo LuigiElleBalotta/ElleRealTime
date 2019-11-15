@@ -1,9 +1,9 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using ElleFramework.Database.MVC;
-using UnityEngine;
 
-namespace ElleRealTimeStd.Shared.Entities.Accounts
+namespace ElleRealTime.Shared.DBEntities.Accounts
 {
     public class Account : View
     {

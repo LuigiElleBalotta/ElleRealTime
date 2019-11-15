@@ -51,8 +51,8 @@ public class Login : MonoBehaviour
         {
             if (!IsLogged)
             {
-                NotLoggedClient c = new NotLoggedClient();
-                var task = Task.Run(async () => await c.CheckLogin(usernameString, passwordString));
+                NotLoggedClient c = new NotLoggedClient(usernameString, passwordString);
+                c.Connect();
             }
         }
 
