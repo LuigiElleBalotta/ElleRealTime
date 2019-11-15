@@ -13,16 +13,7 @@ namespace ElleRealTime.SqlServer.World
     {
         public void InsertPlayerInfo(PlayerInfo playerInfo, DbTransaction trans)
         {
-            Hashtable prms = new Hashtable
-            {
-                { $"@{nameof(PlayerInfo.AccountID)}", playerInfo.AccountID },
-                { $"@{nameof(PlayerInfo.PosX)}", playerInfo.PosX },
-                { $"@{nameof(PlayerInfo.PosY)}", playerInfo.PosY },
-                { $"@{nameof(PlayerInfo.PosZ)}", playerInfo.PosZ },
-                { $"@{nameof(PlayerInfo.RotX)}", playerInfo.RotX },
-                { $"@{nameof(PlayerInfo.RotY)}", playerInfo.RotY },
-                { $"@{nameof(PlayerInfo.RotZ)}", playerInfo.RotZ },
-            };
+            ElleRealTimeBaseDAO.Base.World.Players.InsertPlayerInfo(this, playerInfo, trans);
         }
 
         public PlayerInfo[] GetPlayersInfo(PlayersInfoFilter filter, DbTransaction trans)
