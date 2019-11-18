@@ -58,8 +58,9 @@ namespace ElleRealTimeBaseDAO.Base.World
 
         public static string GetBaseQueryPlayersInfo(PlayersInfoFilter filter, Hashtable prms)
         {
-            return "SELECT PI.* " +
+            return "SELECT PI.*, A.Username " +
                    "FROM players_info PI " +
+                   "JOIN accounts A ON A.ID = PI.AccountID " +
                    filter.WhereCondition(prms);
         }
     }

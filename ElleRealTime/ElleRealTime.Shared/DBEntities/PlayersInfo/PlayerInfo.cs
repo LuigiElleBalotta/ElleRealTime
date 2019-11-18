@@ -8,6 +8,7 @@ namespace ElleRealTime.Shared.DBEntities.PlayersInfo
     public class PlayerInfo : View
     {
         public int AccountID { get; set; }
+        public string Username { get; set; }
         public float PosX { get; set; }
         public float PosY { get; set; }
         public float PosZ { get; set; }

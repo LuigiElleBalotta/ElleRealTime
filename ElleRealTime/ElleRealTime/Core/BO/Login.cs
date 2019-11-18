@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Text;
 using ElleFramework.Database;
+using ElleRealTime.Shared.DBEntities.Accounts;
 using ElleRealTimeBaseDAO.Interfaces;
 using MagicOnion;
 
@@ -36,6 +38,17 @@ namespace ElleRealTime.Core.BO
             ILogin dao = DAOFactory.Create<ILogin>();
             string hashedPassword = Shared.BO.Utils.GenerateHashPassword(username, password);
             dao.ModifyPassword(username, hashedPassword, null);
+        }
+
+        public Account[] GetAccountsInfo(AccountsFilter filter)
+        {
+            return GetAccountsInfo(filter, null);
+        }
+
+        internal Account[] GetAccountsInfo(AccountsFilter filter, DbTransaction trans)
+        {
+            ILogin dao = DAOFactory.Create<ILogin>();
+            return dao.GetAccountsInfo(filter, trans);
         }
     }
 }

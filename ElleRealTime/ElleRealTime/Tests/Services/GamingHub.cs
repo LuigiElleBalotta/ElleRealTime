@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using ElleRealTime.Core.BO;
 using ElleRealTime.Core.BO.World;
+using ElleRealTime.Shared.DBEntities.Accounts;
 using ElleRealTime.Shared.DBEntities.PlayersInfo;
 using ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player;
 using ElleRealTimeStd.Shared.Test.Interfaces.StreamingHub;
@@ -24,21 +26,28 @@ namespace ElleRealTime.Tests.Services
         {
             var bo = new Players();
             var result = bo.GetPlayerInfo(new PlayersInfoFilter {AccountID = accountId});
+            string accountName = "";
             if (result != null && result.Length == 1)
             {
                 PlayerInfo playerInfo = result[0];
+                accountName = playerInfo.Username;
                 self = new Player
                 {
-                    Name = accountId.ToString(), //ToDO: Temp
+                    ID = playerInfo.AccountID,
+                    Name = playerInfo.Username,
                     Position = new Vector3(playerInfo.PosX, playerInfo.PosY, playerInfo.PosZ),
                     Rotation = new Quaternion(playerInfo.RotX, playerInfo.RotY, playerInfo.RotZ, 0)
                 };
             }
             else
             {
+                AccountsFilter filter = new AccountsFilter {ID = accountId};
+                Account account = new Login().GetAccountsInfo(filter)[0];
+                accountName = account.Username;
                 self = new Player
                 {
-                    Name = accountId.ToString(), //ToDO: Temp
+                    ID = account.ID,
+                    Name = account.Username,
                     Position = DefaultVector3,
                     Rotation = DefaultQuaternion
                 };
@@ -48,7 +57,7 @@ namespace ElleRealTime.Tests.Services
 
             Broadcast(room).OnJoin(self);
 
-            Console.WriteLine($"{accountId} joined the room \"{roomName}\"");
+            Console.WriteLine($"{accountName} joined the room \"{roomName}\"");
 
             return storage.AllValues.ToArray();
         }
@@ -74,7 +83,7 @@ namespace ElleRealTime.Tests.Services
 
         public async Task SendAnimStateAsync(int state)
         {
-            Broadcast(room).OnAnimStateChange(self.Name, state);
+            Broadcast(room).OnAnimStateChange(self.ID, state);
         }
 
         public async Task SavePlayerAsync()

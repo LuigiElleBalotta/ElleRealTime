@@ -35,5 +35,23 @@ namespace ElleRealTime.SqlServer
         {
             ElleRealTimeBaseDAO.Base.Login.ModifyPassword(this, username, hashedPassword, trans);
         }
+
+        public Account[] GetAccountsInfo(AccountsFilter filter, DbTransaction trans)
+        {
+            Hashtable prms = new Hashtable
+            {
+                { "@FirstRow", filter.FirstRow },
+                { "@LastRow", filter.LastRow },
+            };
+
+            return ExecuteViewArray<Account>("SELECT * " +
+                                                "FROM ( " +
+                                                "    SELECT MZ.*, " +
+                                                "			 ROW_NUMBER() OVER (" + filter.OrderByCondition() + ") AS rn " +
+                                                "    FROM ( " + ElleRealTimeBaseDAO.Base.Login.GetBaseQueryAccounts(filter, prms) + " ) MZ " +
+                                                ") NumMZ " +
+                                                "WHERE rn BETWEEN @FirstRow AND @LastRow",
+                prms, trans);
+        }
     }
 }

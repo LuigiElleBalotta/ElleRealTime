@@ -34,5 +34,10 @@ namespace ElleRealTimeBaseDAO.Base
                                 $"SET Password = @{nameof(Account.Password)} " +
                                 $"WHERE LOWER(Username) = LOWER(@{nameof(Account.Username)})", prms, trans);
         }
+
+        public static string GetBaseQueryAccounts(AccountsFilter filter, Hashtable prms)
+        {
+            return "SELECT * FROM accounts " + filter.WhereCondition(prms);
+        }
     }
 }

@@ -37,5 +37,17 @@ namespace ElleRealTime.MySql
         {
             ElleRealTimeBaseDAO.Base.Login.ModifyPassword(this, username, hashedPassword, trans);
         }
+
+        public Account[] GetAccountsInfo(AccountsFilter filter, DbTransaction trans)
+        {
+            Hashtable prms = new Hashtable
+            {
+                { "@FirstRow", filter.FirstRow },
+                { "@LastRow", filter.LastRow },
+            };
+
+            return ExecuteViewArray<Account>(ElleRealTimeBaseDAO.Base.Login.GetBaseQueryAccounts(filter, prms) + filter.OrderByCondition() +
+                                                " LIMIT @FirstRow, @LastRow", prms, trans);
+        }
     }
 }

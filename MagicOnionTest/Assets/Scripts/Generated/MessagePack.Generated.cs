@@ -92,10 +92,11 @@ namespace MessagePack.Formatters.ElleRealTimeStd.Shared.Test.Entities.StreamingH
             }
             
             var startOffset = offset;
-            offset += global::MessagePack.MessagePackBinary.WriteFixedArrayHeaderUnsafe(ref bytes, offset, 3);
+            offset += global::MessagePack.MessagePackBinary.WriteFixedArrayHeaderUnsafe(ref bytes, offset, 4);
             offset += formatterResolver.GetFormatterWithVerify<string>().Serialize(ref bytes, offset, value.Name, formatterResolver);
             offset += formatterResolver.GetFormatterWithVerify<global::UnityEngine.Vector3>().Serialize(ref bytes, offset, value.Position, formatterResolver);
             offset += formatterResolver.GetFormatterWithVerify<global::UnityEngine.Quaternion>().Serialize(ref bytes, offset, value.Rotation, formatterResolver);
+            offset += MessagePackBinary.WriteInt32(ref bytes, offset, value.ID);
             return offset - startOffset;
         }
 
@@ -114,6 +115,7 @@ namespace MessagePack.Formatters.ElleRealTimeStd.Shared.Test.Entities.StreamingH
             var __Name__ = default(string);
             var __Position__ = default(global::UnityEngine.Vector3);
             var __Rotation__ = default(global::UnityEngine.Quaternion);
+            var __ID__ = default(int);
 
             for (int i = 0; i < length; i++)
             {
@@ -130,6 +132,9 @@ namespace MessagePack.Formatters.ElleRealTimeStd.Shared.Test.Entities.StreamingH
                     case 2:
                         __Rotation__ = formatterResolver.GetFormatterWithVerify<global::UnityEngine.Quaternion>().Deserialize(bytes, offset, formatterResolver, out readSize);
                         break;
+                    case 3:
+                        __ID__ = MessagePackBinary.ReadInt32(bytes, offset, out readSize);
+                        break;
                     default:
                         readSize = global::MessagePack.MessagePackBinary.ReadNextBlock(bytes, offset);
                         break;
@@ -143,6 +148,7 @@ namespace MessagePack.Formatters.ElleRealTimeStd.Shared.Test.Entities.StreamingH
             ____result.Name = __Name__;
             ____result.Position = __Position__;
             ____result.Rotation = __Rotation__;
+            ____result.ID = __ID__;
             return ____result;
         }
     }

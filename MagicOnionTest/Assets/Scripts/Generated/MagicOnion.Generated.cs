@@ -381,7 +381,7 @@ namespace ElleRealTimeStd.Shared.Test.Interfaces.StreamingHub {
                 }
                 case -1176718190: // OnAnimStateChange
                 {
-                    var result = LZ4MessagePackSerializer.Deserialize<DynamicArgumentTuple<string, int>>(data, resolver);
+                    var result = LZ4MessagePackSerializer.Deserialize<DynamicArgumentTuple<int, int>>(data, resolver);
                     receiver.OnAnimStateChange(result.Item1, result.Item2); break;
                 }
                 case -660277788: // OnPlayerInfoSaved

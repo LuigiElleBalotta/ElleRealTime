@@ -14,7 +14,7 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
     public static InitClient Instance { get { return _instance; } }
     private Channel channel;
     private IGamingHub streamingClient;
-    Dictionary<string, GameObject> players = new Dictionary<string, GameObject>();
+    Dictionary<int, GameObject> players = new Dictionary<int, GameObject>();
     private static string currentPlayerName = "";
 
     private bool isJoin;
@@ -76,7 +76,9 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
             (this as IGamingHubReceiver).OnJoin(player);
         }
 
-        return players[Client.GlobalVariables.CurrentAccountID.ToString()];
+        currentPlayerName = players[Client.GlobalVariables.CurrentAccountID].name;
+
+        return players[Client.GlobalVariables.CurrentAccountID];
     }
 
     private async void RegisterDisconnectEvent(IGamingHub streamingClient)
@@ -156,11 +158,11 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
     {
         GameObject p = null;
         Debug.Log("Join Player:" + player.Name);
-        if (!players.ContainsKey(player.Name))
+        if (!players.ContainsKey(player.ID))
         {
             p = Instantiate(myModel, player.Position, player.Rotation);
             p.name = player.Name;
-            players.Add(player.Name, p);
+            players.Add(player.ID, p);
         }
         else
         {
@@ -173,10 +175,10 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
     {
         Debug.Log("Leave Player:" + player.Name);
 
-        if (players.TryGetValue(player.Name, out var otherPerson))
+        if (players.TryGetValue(player.ID, out var otherPerson))
         {
             GameObject.Destroy(otherPerson);
-            players.Remove(player.Name);
+            players.Remove(player.ID);
         }
     }
 
@@ -184,7 +186,7 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
     {
         Debug.Log($"{player.Name} si sta muovendo!!");
 
-        if (players.TryGetValue(player.Name, out var otherPerson))
+        if (players.TryGetValue(player.ID, out var otherPerson))
         {
             if (otherPerson != null && otherPerson.name != currentPlayerName)
             {
@@ -195,11 +197,11 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
         }
     }
 
-    void IGamingHubReceiver.OnAnimStateChange(string playerName, int state)
+    void IGamingHubReceiver.OnAnimStateChange(int playerId, int state)
     {
-        Debug.Log($"{playerName} CAMBIA ANIM STATE!!");
+        Debug.Log($"{playerId} CAMBIA ANIM STATE!!");
 
-        if (players.TryGetValue(playerName, out var otherPerson))
+        if (players.TryGetValue(playerId, out var otherPerson))
         {
             if (otherPerson != null && otherPerson.name != currentPlayerName)
             {

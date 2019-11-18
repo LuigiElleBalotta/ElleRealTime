@@ -12,5 +12,7 @@ namespace ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player
         public Vector3 Position { get; set; }
         [Key(2)]
         public Quaternion Rotation { get; set; }
+        [Key(3)]
+        public int ID { get; set; }
     }
 }
