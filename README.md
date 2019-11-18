@@ -10,10 +10,10 @@ Supports multiplayer and realtime engine.
 - Player movement with animations
 - Minimap
 - Player Info save (position) + load at next login
+- Npc spawn
 
 ## Planned todos
 - Support SqlLite DB (for offline play mode)
-- Npc spawn
 - Health 
 - Chat
 - Send commands from chat to server
