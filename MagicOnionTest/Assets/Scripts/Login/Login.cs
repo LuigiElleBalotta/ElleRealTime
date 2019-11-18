@@ -61,11 +61,12 @@ public class Login : MonoBehaviour
         GUI.Label(new Rect(Screen.width/3, 62*Screen.height/100, Screen.width/5, Screen.height/8), "Password");
     }
 
-    public static void HandleAfterLogin( bool isLogged, int accountId )
+    public static async void HandleAfterLogin( bool isLogged, int accountId )
     {
         if (isLogged)
         {
             Debug.Log($"Welcome, {accountId}");
+            await NotLoggedClient.Instance.OnDestroy();
             //Change scene with accountId
             Client.GlobalVariables.CurrentAccountID = accountId;
             SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);

@@ -55,6 +55,7 @@ namespace ElleRealTime.Tests.Services
 
             (room, storage) = await Group.AddAsync(roomName, self);
 
+            //Send to already connected players that a new player has joined.
             Broadcast(room).OnJoin(self);
 
             Console.WriteLine($"{accountName} joined the room \"{roomName}\"");

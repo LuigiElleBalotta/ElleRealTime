@@ -11,21 +11,25 @@ namespace ElleRealTime.Services
 
         public async Task LeaveAsync()
         {
-            throw new System.NotImplementedException();
+            await room.RemoveAsync(this.Context);
         }
 
         public async Task<int> JoinAsync(string roomName, string username, string password)
         {
-            Logger.Info($"Received {username} & {password}");
+            Program.Logger.Info($"[LoginService] {username} has requested login.");
 
             (room) = await Group.AddAsync(roomName);
 
             var bo = new Login();
             int accountId = bo.CheckLogin(username, password);
 
-            Program.Logger.Info($"Sending ID: {accountId}");
-
-            Broadcast(room).OnJoin(accountId);
+            if (accountId > 0)
+            {
+                Program.Logger.Success($"[LoginService] {username} logged successfully with ID: {accountId}");
+                //Broadcast(room).OnJoin(accountId);
+            }
+            else
+                Program.Logger.Error($"[LoginService] {username} has sent wrong credentials!", false);
 
             return accountId;
         }

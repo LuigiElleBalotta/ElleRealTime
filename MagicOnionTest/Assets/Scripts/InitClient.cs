@@ -58,22 +58,22 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
 
     private async void InitializeClient()
     {
-        currentPlayerName = "Elle_" + Guid.NewGuid();
-
         // Initialize the Hub
         this.channel = new Channel("localhost", 12345, ChannelCredentials.Insecure);
-        GameObject player = await ConnectAsync(channel, "test", currentPlayerName);
+        GameObject player = await ConnectAsync(channel, "Lordaeron");
         this.RegisterDisconnectEvent(streamingClient);
     }
 
-    private async Task<GameObject> ConnectAsync(Channel grpcChannel, string roomName, string playerName)
+    private async Task<GameObject> ConnectAsync(Channel grpcChannel, string roomName)
     {
         this.streamingClient = StreamingHubClient.Connect<IGamingHub, IGamingHubReceiver>(grpcChannel, this);
 
+        //Returns already joined players + me
         var roomPlayers = await this.streamingClient.JoinAsync(roomName, Client.GlobalVariables.CurrentAccountID);
         foreach (var player in roomPlayers)
         {
-            (this as IGamingHubReceiver).OnJoin(player);
+            if( player.ID != Client.GlobalVariables.CurrentAccountID )
+                (this as IGamingHubReceiver).OnJoin(player);
         }
 
         currentPlayerName = players[Client.GlobalVariables.CurrentAccountID].name;
@@ -91,26 +91,7 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
         finally
         {
             // try-to-reconnect? logging event? close? etc...
-            Debug.Log("disconnected server.");
-
-            if (this.isSelfDisConnected)
-            {
-                // there is no particular meaning
-                await Task.Delay(2000);
-
-                // reconnect
-                this.ReconnectServer();
-            }
         }
-    }
-
-    private void ReconnectServer()
-    {
-        this.streamingClient = StreamingHubClient.Connect<IGamingHub, IGamingHubReceiver>(this.channel, this);
-        this.RegisterDisconnectEvent(streamingClient);
-        Debug.Log("Reconnected server.");
-
-        this.isSelfDisConnected = false;
     }
 
     // methods send to server.
@@ -144,25 +125,18 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
     protected async void OnDestroy()
     {
         //It seems it doesn't let the client close.
-        //await LeaveAsync();
-        await this.streamingClient.DisposeAsync();
-    }
-
-    // You can watch connection state, use this for retry etc.
-    public Task WaitForDisconnect()
-    {
-        return streamingClient.WaitForDisconnect();
+        await LeaveAsync();
+        await DisposeAsync();
     }
 
     void IGamingHubReceiver.OnJoin(Player player)
     {
         GameObject p = null;
-        Debug.Log("Join Player:" + player.Name);
+        Debug.Log($"[Client/OnJoin] New player has joined: \"{player.Name}\"");
         if (!players.ContainsKey(player.ID))
         {
-            p = Instantiate(myModel, player.Position, player.Rotation);
-            p.name = player.Name;
-            players.Add(player.ID, p);
+            InstantiateGameObject(player, out p);
+            Debug.Log($"[Client/OnJoin] GameObject with name \"{p.name}\" instantiated.");
         }
         else
         {
@@ -171,11 +145,18 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
         
     }
 
+    private void InstantiateGameObject(Player player, out GameObject p)
+    {
+        p = Instantiate(myModel, player.Position, player.Rotation);
+        p.name = player.Name;
+        players.Add(player.ID, p);
+    }
+
     void IGamingHubReceiver.OnLeave(Player player)
     {
-        Debug.Log("Leave Player:" + player.Name);
+        Debug.Log($"[Client] Player \"{player.Name}\" disconnected from server.");
 
-        if (players.TryGetValue(player.ID, out var otherPerson))
+        if (players.TryGetValue(player.ID, out GameObject otherPerson))
         {
             GameObject.Destroy(otherPerson);
             players.Remove(player.ID);
