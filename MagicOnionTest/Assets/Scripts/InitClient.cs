@@ -96,9 +96,9 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
 
     // methods send to server.
 
-    public Task LeaveAsync()
+    public async Task LeaveAsync()
     {
-        return streamingClient.LeaveAsync();
+        await streamingClient.LeaveAsync();
     }
 
     public Task MoveAsync(Vector3 position, Quaternion rotation)
@@ -117,16 +117,22 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
     }
 
     // dispose client-connection before channel.ShutDownAsync is important!
-    public Task DisposeAsync()
+    public async Task DisposeAsync()
     {
-        return streamingClient.DisposeAsync();
+        await streamingClient.DisposeAsync();
     }
 
     protected async void OnDestroy()
     {
         //It seems it doesn't let the client close.
+        await SavePlayer();
         await LeaveAsync();
         await DisposeAsync();
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+        #else
+                Application.Quit();
+        #endif
     }
 
     void IGamingHubReceiver.OnJoin(Player player)

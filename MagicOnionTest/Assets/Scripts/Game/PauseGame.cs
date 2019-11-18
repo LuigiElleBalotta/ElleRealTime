@@ -31,4 +31,13 @@ public class PauseGame : MonoBehaviour {
     {
         InitClient.Instance.SavePlayer();
     }
+
+    public async void Disconnect()
+    {
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
+        Application.Quit();
+        #endif
+    }
 }
