@@ -24,6 +24,7 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
 
     public GameObject myModel;
     public List<GameObject> ListGameobjects = new List<GameObject>(); //Dummy, "Super Zombie"
+    public List<int> instantiatedGameobjects = new List<int>();
     private static InitClient _instance;
 
     void Awake()
@@ -218,12 +219,18 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
 
     void IGamingHubReceiver.OnQueriedCreatures(CreatureUnity[] creatures)
     {
+        Debug.Log($"[Client/OnQueriedCreatures] Received {creatures.Length} creatures.");
         foreach (CreatureUnity creature in creatures)
         {
             if (ListGameobjects.Where(x => x.name == creature.PrefabName).ToArray().Length > 0)
             {
                 GameObject gobj = ListGameobjects.Where(x => x.name == creature.PrefabName).ToArray()[0];
-                Instantiate(gobj, creature.Position, creature.Rotation);
+                Debug.Log($"[OnQueriedCreatures] spawning {gobj.name} with Guid: {creature.Guid}.");
+                if (!instantiatedGameobjects.Contains(creature.Guid))
+                {
+                    Instantiate(gobj, creature.Position, creature.Rotation);
+                    instantiatedGameobjects.Add(creature.Guid);
+                }
             }
         }
     }

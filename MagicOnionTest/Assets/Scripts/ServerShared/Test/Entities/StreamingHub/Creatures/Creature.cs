@@ -14,6 +14,10 @@ namespace ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Creatures
         public Vector3 Position { get; set; }
         [Key(2)]
         public Quaternion Rotation { get; set; }
+        [Key(3)]
+        public int ID { get; set; }
+        [Key(4)]
+        public int Guid { get; set; }
     }
 }
 

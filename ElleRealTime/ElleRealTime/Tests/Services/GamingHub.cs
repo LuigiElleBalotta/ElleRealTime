@@ -26,6 +26,13 @@ namespace ElleRealTime.Tests.Services
         Player self;
         IInMemoryStorage<Player> storage;
         private static List<Player> players = new List<Player>();
+        private GamingHub _instance;
+        public static GamingHub Instance;
+
+        public GamingHub()
+        {
+            Instance = this;
+        }
 
         public static Player[] GetOnlinePlayers()
         {
@@ -131,7 +138,7 @@ namespace ElleRealTime.Tests.Services
 
             Creature[] creatures = bo.GetCreatures();
             CreatureUnity[] ret = Creature.ToUnity(creatures);
-            BroadcastToSelf(room).OnQueriedCreatures(ret);
+            Broadcast(room).OnQueriedCreatures(ret);
         }
     }
 }

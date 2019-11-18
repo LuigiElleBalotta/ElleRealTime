@@ -9,6 +9,8 @@ namespace ElleRealTime.Shared.DBEntities.Creatures
 {
     public class Creature : View
     {
+        public int ID { get; set; }
+        public int Guid { get; set; }
         public string PrefabName { get; set; }
         public float PosX { get; set; }
         public float PosY { get; set; }
@@ -24,6 +26,8 @@ namespace ElleRealTime.Shared.DBEntities.Creatures
             {
                 CreatureUnity c = new CreatureUnity
                 {
+                    ID = creature.ID,
+                    Guid = creature.Guid,
                     PrefabName = creature.PrefabName,
                     Position = new Vector3( creature.PosX, creature.PosY, creature.PosZ ),
                     Rotation = new Quaternion( creature.RotX, creature.RotY, creature.RotZ, 0)

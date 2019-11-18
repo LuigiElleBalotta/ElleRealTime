@@ -1111,6 +1111,8 @@ MonoBehaviour:
   ListGameobjects:
   - {fileID: 3246812207712153541, guid: 79cd5e4a326dd9c47aed83493d1a1c0d, type: 3}
   - {fileID: 167188448435245423, guid: eafec384cec40b34da23cc31b0c565b9, type: 3}
+  - {fileID: 4721000133477610868, guid: de179e0191484be4d9073a97854db70e, type: 3}
+  instantiatedGameobjects: 
 --- !u!4 &1717218413
 Transform:
   m_ObjectHideFlags: 0

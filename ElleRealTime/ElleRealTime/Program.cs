@@ -8,6 +8,7 @@ using ElleRealTime.Core.Configuration;
 using ElleRealTime.Core.Logging;
 using ElleRealTime.Shared.BO;
 using ElleRealTime.Shared.DBEntities.PlayersInfo;
+using ElleRealTime.Tests.Services;
 using Grpc.Core;
 using MagicOnion.Server;
 using MySql.Data.MySqlClient;
@@ -150,6 +151,7 @@ namespace ElleRealTime
                             var bo = new Creatures();
                             string prefabName = parameters[1];
                             bo.InsertSpawnCreature(prefabName);
+                            GamingHub.Instance.QueryCreaturesAsync();
                         }
                         else
                         {
