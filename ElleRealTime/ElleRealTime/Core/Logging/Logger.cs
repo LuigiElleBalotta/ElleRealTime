@@ -14,11 +14,16 @@ namespace ElleRealTime.Core.Logging
             var config = new NLog.Config.LoggingConfiguration();
             // Targets where to log to: File and Console
             var logfile = new NLog.Targets.FileTarget("logfile") { FileName = "nlog.txt" };
-            var logconsole = new NLog.Targets.ConsoleTarget("logconsole");
+            var logconsole = new NLog.Targets.ConsoleTarget
+            {
+                Name = "logconsole",
+                Layout = @"${message}"
+            };
 
             // Rules for mapping loggers to targets            
-            config.AddRule(LogLevel.Info, LogLevel.Fatal, logconsole);
-            config.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
+            /*config.AddRule(LogLevel.Info, LogLevel.Fatal, logconsole);
+            config.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);*/
+            config.AddRuleForAllLevels(logconsole);
 
             // Apply config           
             NLog.LogManager.Configuration = config;
@@ -44,7 +49,10 @@ namespace ElleRealTime.Core.Logging
         {
             var oldColor = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Red;
-            LoggerObj.Error(message);
+            if( close )
+                LoggerObj.Fatal(message);
+            else
+                LoggerObj.Error(message);
 
             if( close )
                 Console.WriteLine("Closing in 5 seconds...");

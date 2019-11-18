@@ -59,7 +59,7 @@ namespace ElleRealTime.Tests.Services
             //Send to already connected players that a new player has joined.
             Broadcast(room).OnJoin(self);
 
-            Program.Logger.Info($"\"{accountName}\" joined the room: \"{roomName}\"");
+            Program.Logger.Info($"[GamingHub] \"{accountName}\" joined the room: \"{roomName}\"");
 
             return storage.AllValues.ToArray();
         }
@@ -67,7 +67,7 @@ namespace ElleRealTime.Tests.Services
         public async Task LeaveAsync()
         {
             await room.RemoveAsync(this.Context);
-            Program.Logger.Info($"\"{self.Name}\" leaves the room.");
+            Program.Logger.Info($"[GamingHub] \"{self.Name}\" leaves the room.");
             Broadcast(room).OnLeave(self);
         }
 
@@ -76,11 +76,11 @@ namespace ElleRealTime.Tests.Services
             self.Position = position;
             self.Rotation = rotation;
 
-            Program.Logger.Info($"=================================={DateTime.Now.ToString(Constants.DATETIME_FORMAT)}================================");
-            Program.Logger.Info($"\"{self.Name}\" is moving to: ");
-            Program.Logger.Info($"Vector3: x={position.x}, y={position.y}, z={position.z} ");
-            Program.Logger.Info($"Quaternion: x={rotation.x}, y={rotation.y}, z={rotation.z}, w={rotation.w}");
-            Program.Logger.Info($"===================================================================================");
+            //Program.Logger.Info($"=================================={DateTime.Now.ToString(Constants.DATETIME_FORMAT)}==============================");
+            Program.Logger.Info($"[GamingHub] \"{self.Name}\" is moving!");
+            //Program.Logger.Info($"Vector3: x={position.x}, y={position.y}, z={position.z} ");
+            //Program.Logger.Info($"Quaternion: x={rotation.x}, y={rotation.y}, z={rotation.z}, w={rotation.w}");
+           // Program.Logger.Info($"===================================================================================");
 
             Broadcast(room).OnMove(self);
         }
@@ -92,7 +92,7 @@ namespace ElleRealTime.Tests.Services
 
         public async Task SavePlayerAsync()
         {
-            Program.Logger.Info($"Player \"{self.Name}\" requested to save his info.");
+            Program.Logger.Info($"[GamingHub] Player \"{self.Name}\" requested to save his info.");
             var bo = new Players();
 
             PlayerInfo playerInfo = new PlayerInfo
@@ -105,10 +105,11 @@ namespace ElleRealTime.Tests.Services
                 RotY = self.Rotation.y,
                 RotZ = self.Rotation.z,
 
-                AccountID = int.Parse(self.Name)
+                AccountID = self.ID
             };
 
             bo.SavePlayerInfo(playerInfo);
+            Program.Logger.Success($"[GamingHub] Saved player(\"{self.Name}\") info.");
 
             BroadcastToSelf(room).OnPlayerInfoSaved();
         }
