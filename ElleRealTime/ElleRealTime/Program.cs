@@ -46,6 +46,7 @@ namespace ElleRealTime
             string line = "";
             do
             {
+                Console.Write("ElleRealTime >");
                 line = Console.ReadLine();
                 if (line != "quit")
                 {
@@ -137,6 +138,10 @@ namespace ElleRealTime
                         {
                             Logger.Error(ex.InnerException?.Message ?? ex.Message, true);
                         }
+                    }
+                    else if (line.StartsWith(".clearconsole"))
+                    {
+                        Console.Clear();
                     }
                 }
 
