@@ -1,4 +1,5 @@
-﻿using ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player;
+﻿using ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Creatures;
+using ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player;
 
 namespace ElleRealTimeStd.Shared.Test.Interfaces.StreamingHub
 {
@@ -9,5 +10,6 @@ namespace ElleRealTimeStd.Shared.Test.Interfaces.StreamingHub
         void OnMove(Player player);
         void OnAnimStateChange(int playerId, int state);
         void OnPlayerInfoSaved();
+        void OnQueriedCreatures(CreatureUnity[] creatures);
     }
 }

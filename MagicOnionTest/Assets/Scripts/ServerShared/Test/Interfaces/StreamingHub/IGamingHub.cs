@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Creatures;
 using ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player;
 using MagicOnion;
 using UnityEngine;
@@ -12,5 +13,6 @@ namespace ElleRealTimeStd.Shared.Test.Interfaces.StreamingHub
         Task MoveAsync(Vector3 position, Quaternion rotation);
         Task SendAnimStateAsync(int state);
         Task SavePlayerAsync();
+        Task QueryCreaturesAsync();
     }
 }

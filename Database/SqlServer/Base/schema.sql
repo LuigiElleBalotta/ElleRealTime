@@ -66,3 +66,25 @@ ALTER TABLE [dbo].[players_info] ADD CONSTRAINT [PK__players___349DA586E401A15B]
 WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
 ON [PRIMARY]
 GO
+
+
+-- ----------------------------
+-- Table structure for creatures
+-- ----------------------------
+IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[creatures]') AND type IN ('U'))
+	DROP TABLE [dbo].[creatures]
+GO
+
+CREATE TABLE [dbo].[creatures] (
+  [PrefabName] varchar(255) COLLATE Latin1_General_CI_AS  NOT NULL,
+  [PosX] float(53)  NOT NULL,
+  [PosY] float(53)  NOT NULL,
+  [PosZ] float(53)  NOT NULL,
+  [RotX] float(53)  NOT NULL,
+  [RotY] float(53)  NOT NULL,
+  [RotZ] float(53)  NOT NULL
+)
+GO
+
+ALTER TABLE [dbo].[creatures] SET (LOCK_ESCALATION = TABLE)
+GO

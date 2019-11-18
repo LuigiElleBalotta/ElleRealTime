@@ -22,6 +22,20 @@ CREATE TABLE IF NOT EXISTS `accounts` (
 
 -- L’esportazione dei dati non era selezionata.
 
+-- Dump della struttura di tabella ellerealtime.creatures
+DROP TABLE IF EXISTS `creatures`;
+CREATE TABLE IF NOT EXISTS `creatures` (
+  `PrefabName` varchar(255) NOT NULL,
+  `PosX` float NOT NULL,
+  `PosY` float NOT NULL,
+  `PosZ` float NOT NULL,
+  `RotX` float NOT NULL,
+  `RotY` float NOT NULL,
+  `RotZ` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- L’esportazione dei dati non era selezionata.
+
 -- Dump della struttura di tabella ellerealtime.players_info
 DROP TABLE IF EXISTS `players_info`;
 CREATE TABLE IF NOT EXISTS `players_info` (

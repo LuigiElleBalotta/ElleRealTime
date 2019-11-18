@@ -77,7 +77,6 @@ namespace ElleRealTime
                             Logger.Error(ex.InnerException?.Message ?? ex.Message, true);
                         }
                     }
-
                     else if (line.StartsWith(".modifypassword"))
                     {
                         try
@@ -142,6 +141,20 @@ namespace ElleRealTime
                     else if (line.StartsWith(".clearconsole"))
                     {
                         Console.Clear();
+                    }
+                    else if (line.StartsWith(".spawn")) //Debug purpose only
+                    {
+                        string[] parameters = line.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                        if (parameters.Length == 2)
+                        {
+                            var bo = new Creatures();
+                            string prefabName = parameters[1];
+                            bo.InsertSpawnCreature(prefabName);
+                        }
+                        else
+                        {
+                            Logger.Error("Syntax error: .spawn {prefabName}");
+                        }
                     }
                 }
 

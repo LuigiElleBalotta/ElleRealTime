@@ -1,16 +1,27 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Text;
+using ElleRealTime.Shared.DBEntities.Creatures;
 using ElleRealTimeBaseDAO;
 using ElleRealTimeBaseDAO.Interfaces;
+using ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player;
 
 namespace ElleRealTime.MySql
 {
     public class Creatures : ElleRealTimeDbDAO, ICreatures
     {
-        public string GetCreature()
+        public Creature[] GetCreatures()
         {
-            return ElleRealTimeBaseDAO.Base.Creatures.GetBaseQueryCreatures();
+
+            return ExecuteViewArray<Creature>(ElleRealTimeBaseDAO.Base.Creatures.GetBaseQueryCreatures(),
+                new Hashtable(), null);
+        }
+
+        public void InsertSpawnCreature(string prefabName, Player player, DbTransaction trans)
+        {
+            ElleRealTimeBaseDAO.Base.Creatures.InsertSpawnCreature(this, prefabName, player, trans);
         }
     }
 }

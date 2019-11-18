@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ElleRealTime.Core.BO;
 using ElleRealTime.Core.BO.World;
 using ElleRealTime.Shared;
 using ElleRealTime.Shared.DBEntities.Accounts;
+using ElleRealTime.Shared.DBEntities.Creatures;
 using ElleRealTime.Shared.DBEntities.PlayersInfo;
+using ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Creatures;
 using ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player;
 using ElleRealTimeStd.Shared.Test.Interfaces.StreamingHub;
 using MagicOnion.Server.Hubs;
@@ -22,6 +25,12 @@ namespace ElleRealTime.Tests.Services
         IGroup room;
         Player self;
         IInMemoryStorage<Player> storage;
+        private static List<Player> players = new List<Player>();
+
+        public static Player[] GetOnlinePlayers()
+        {
+            return players.ToArray();
+        }
 
         public async Task<Player[]> JoinAsync(string roomName, int accountId)
         {
@@ -60,12 +69,13 @@ namespace ElleRealTime.Tests.Services
             Broadcast(room).OnJoin(self);
 
             Program.Logger.Info($"[GamingHub] \"{accountName}\" joined the room: \"{roomName}\"");
-
+            players.Add(self);
             return storage.AllValues.ToArray();
         }
 
         public async Task LeaveAsync()
         {
+            players.Remove(players.Where(x => x.ID == self.ID).ToArray()[0]);
             await room.RemoveAsync(this.Context);
             Program.Logger.Info($"[GamingHub] \"{self.Name}\" leaves the room.");
             Broadcast(room).OnLeave(self);
@@ -112,6 +122,16 @@ namespace ElleRealTime.Tests.Services
             Program.Logger.Success($"[GamingHub] Saved player(\"{self.Name}\") info.");
 
             BroadcastToSelf(room).OnPlayerInfoSaved();
+        }
+
+        public async Task QueryCreaturesAsync()
+        {
+            Program.Logger.Info($"[GamingHub] Player \"{self.Name}\" queried creatures.");
+            var bo = new Creatures();
+
+            Creature[] creatures = bo.GetCreatures();
+            CreatureUnity[] ret = Creature.ToUnity(creatures);
+            BroadcastToSelf(room).OnQueriedCreatures(ret);
         }
     }
 }

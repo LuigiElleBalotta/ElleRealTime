@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Assets.Scripts.Game;
+using ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Creatures;
 using ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player;
 using ElleRealTimeStd.Shared.Test.Interfaces.StreamingHub;
 using Grpc.Core;
@@ -21,6 +23,7 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
     private bool isSelfDisConnected;
 
     public GameObject myModel;
+    public List<GameObject> ListGameobjects = new List<GameObject>(); //Dummy, "Super Zombie"
     private static InitClient _instance;
 
     void Awake()
@@ -32,7 +35,14 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
     {
         try
         {
-            
+
+            if (ListGameobjects.Count > 0)
+            {
+                foreach (GameObject gameobject in ListGameobjects)
+                {
+                    Debug.Log(gameobject.name);
+                }
+            }
             this.InitializeClient();
         }
         catch (RpcException ex)
@@ -61,6 +71,8 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
         // Initialize the Hub
         this.channel = new Channel("localhost", 12345, ChannelCredentials.Insecure);
         GameObject player = await ConnectAsync(channel, "Lordaeron");
+
+        await this.streamingClient.QueryCreaturesAsync();
         this.RegisterDisconnectEvent(streamingClient);
     }
 
@@ -202,5 +214,17 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
     {
         //ToDO: close the Pause menu
         Debug.Log("Successfully saved!");
+    }
+
+    void IGamingHubReceiver.OnQueriedCreatures(CreatureUnity[] creatures)
+    {
+        foreach (CreatureUnity creature in creatures)
+        {
+            if (ListGameobjects.Where(x => x.name == creature.PrefabName).ToArray().Length > 0)
+            {
+                GameObject gobj = ListGameobjects.Where(x => x.name == creature.PrefabName).ToArray()[0];
+                Instantiate(gobj, creature.Position, creature.Rotation);
+            }
+        }
     }
 }

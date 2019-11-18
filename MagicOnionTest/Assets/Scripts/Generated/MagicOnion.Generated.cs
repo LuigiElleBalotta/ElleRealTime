@@ -81,13 +81,14 @@ namespace MagicOnion.Resolvers
 
         static MagicOnionResolverGetFormatterHelper()
         {
-            lookup = new global::System.Collections.Generic.Dictionary<Type, int>(5)
+            lookup = new global::System.Collections.Generic.Dictionary<Type, int>(6)
             {
-                {typeof(global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player.Player[]), 0 },
-                {typeof(global::MagicOnion.DynamicArgumentTuple<global::UnityEngine.Vector3, global::UnityEngine.Quaternion>), 1 },
-                {typeof(global::MagicOnion.DynamicArgumentTuple<int, int>), 2 },
-                {typeof(global::MagicOnion.DynamicArgumentTuple<string, int>), 3 },
-                {typeof(global::MagicOnion.DynamicArgumentTuple<string, string, string>), 4 },
+                {typeof(global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Creatures.CreatureUnity[]), 0 },
+                {typeof(global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player.Player[]), 1 },
+                {typeof(global::MagicOnion.DynamicArgumentTuple<global::UnityEngine.Vector3, global::UnityEngine.Quaternion>), 2 },
+                {typeof(global::MagicOnion.DynamicArgumentTuple<int, int>), 3 },
+                {typeof(global::MagicOnion.DynamicArgumentTuple<string, int>), 4 },
+                {typeof(global::MagicOnion.DynamicArgumentTuple<string, string, string>), 5 },
             };
         }
 
@@ -101,11 +102,12 @@ namespace MagicOnion.Resolvers
 
             switch (key)
             {
-                case 0: return new global::MessagePack.Formatters.ArrayFormatter<global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player.Player>();
-                case 1: return new global::MagicOnion.DynamicArgumentTupleFormatter<global::UnityEngine.Vector3, global::UnityEngine.Quaternion>(default(global::UnityEngine.Vector3), default(global::UnityEngine.Quaternion));
-                case 2: return new global::MagicOnion.DynamicArgumentTupleFormatter<int, int>(default(int), default(int));
-                case 3: return new global::MagicOnion.DynamicArgumentTupleFormatter<string, int>(default(string), default(int));
-                case 4: return new global::MagicOnion.DynamicArgumentTupleFormatter<string, string, string>(default(string), default(string), default(string));
+                case 0: return new global::MessagePack.Formatters.ArrayFormatter<global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Creatures.CreatureUnity>();
+                case 1: return new global::MessagePack.Formatters.ArrayFormatter<global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player.Player>();
+                case 2: return new global::MagicOnion.DynamicArgumentTupleFormatter<global::UnityEngine.Vector3, global::UnityEngine.Quaternion>(default(global::UnityEngine.Vector3), default(global::UnityEngine.Quaternion));
+                case 3: return new global::MagicOnion.DynamicArgumentTupleFormatter<int, int>(default(int), default(int));
+                case 4: return new global::MagicOnion.DynamicArgumentTupleFormatter<string, int>(default(string), default(int));
+                case 5: return new global::MagicOnion.DynamicArgumentTupleFormatter<string, string, string>(default(string), default(string), default(string));
                 default: return null;
             }
         }
@@ -389,6 +391,11 @@ namespace ElleRealTimeStd.Shared.Test.Interfaces.StreamingHub {
                     var result = LZ4MessagePackSerializer.Deserialize<Nil>(data, resolver);
                     receiver.OnPlayerInfoSaved(); break;
                 }
+                case 240215745: // OnQueriedCreatures
+                {
+                    var result = LZ4MessagePackSerializer.Deserialize<global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Creatures.CreatureUnity[]>(data, resolver);
+                    receiver.OnQueriedCreatures(result); break;
+                }
                 default:
                     break;
             }
@@ -428,6 +435,12 @@ namespace ElleRealTimeStd.Shared.Test.Interfaces.StreamingHub {
                     ((TaskCompletionSource<Nil>)taskCompletionSource).TrySetResult(result);
                     break;
                 }
+                case -1386097739: // QueryCreaturesAsync
+                {
+                    var result = LZ4MessagePackSerializer.Deserialize<Nil>(data, resolver);
+                    ((TaskCompletionSource<Nil>)taskCompletionSource).TrySetResult(result);
+                    break;
+                }
                 default:
                     break;
             }
@@ -456,6 +469,11 @@ namespace ElleRealTimeStd.Shared.Test.Interfaces.StreamingHub {
         public global::System.Threading.Tasks.Task SavePlayerAsync()
         {
             return WriteMessageWithResponseAsync<Nil, Nil>(-700463433, Nil.Default);
+        }
+
+        public global::System.Threading.Tasks.Task QueryCreaturesAsync()
+        {
+            return WriteMessageWithResponseAsync<Nil, Nil>(-1386097739, Nil.Default);
         }
 
 
@@ -506,6 +524,11 @@ namespace ElleRealTimeStd.Shared.Test.Interfaces.StreamingHub {
             public global::System.Threading.Tasks.Task SavePlayerAsync()
             {
                 return __parent.WriteMessageAsync<Nil>(-700463433, Nil.Default);
+            }
+
+            public global::System.Threading.Tasks.Task QueryCreaturesAsync()
+            {
+                return __parent.WriteMessageAsync<Nil>(-1386097739, Nil.Default);
             }
 
         }
