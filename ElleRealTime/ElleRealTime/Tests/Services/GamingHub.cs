@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ElleRealTime.Core.BO;
 using ElleRealTime.Core.BO.World;
+using ElleRealTime.Shared;
 using ElleRealTime.Shared.DBEntities.Accounts;
 using ElleRealTime.Shared.DBEntities.PlayersInfo;
 using ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player;
@@ -58,7 +59,7 @@ namespace ElleRealTime.Tests.Services
             //Send to already connected players that a new player has joined.
             Broadcast(room).OnJoin(self);
 
-            Console.WriteLine($"{accountName} joined the room \"{roomName}\"");
+            Program.Logger.Info($"\"{accountName}\" joined the room: \"{roomName}\"");
 
             return storage.AllValues.ToArray();
         }
@@ -66,7 +67,7 @@ namespace ElleRealTime.Tests.Services
         public async Task LeaveAsync()
         {
             await room.RemoveAsync(this.Context);
-            Console.WriteLine($"{self.Name} leaves the room.");
+            Program.Logger.Info($"\"{self.Name}\" leaves the room.");
             Broadcast(room).OnLeave(self);
         }
 
@@ -75,9 +76,11 @@ namespace ElleRealTime.Tests.Services
             self.Position = position;
             self.Rotation = rotation;
 
-            Console.WriteLine($"{self.Name} is moving to: ");
-            Console.WriteLine($"Vector3: x={position.x}, y={position.y}, z={position.z} ");
-            Console.WriteLine($"Quaternion: x={rotation.x}, y={rotation.y}, z={rotation.z}, w={rotation.w}");
+            Program.Logger.Info($"=================================={DateTime.Now.ToString(Constants.DATETIME_FORMAT)}================================");
+            Program.Logger.Info($"\"{self.Name}\" is moving to: ");
+            Program.Logger.Info($"Vector3: x={position.x}, y={position.y}, z={position.z} ");
+            Program.Logger.Info($"Quaternion: x={rotation.x}, y={rotation.y}, z={rotation.z}, w={rotation.w}");
+            Program.Logger.Info($"===================================================================================");
 
             Broadcast(room).OnMove(self);
         }
@@ -89,7 +92,7 @@ namespace ElleRealTime.Tests.Services
 
         public async Task SavePlayerAsync()
         {
-            Program.Logger.Info($"Player {self.Name} requested to save his info.");
+            Program.Logger.Info($"Player \"{self.Name}\" requested to save his info.");
             var bo = new Players();
 
             PlayerInfo playerInfo = new PlayerInfo
