@@ -14,5 +14,6 @@ namespace ElleRealTimeStd.Shared.Test.Interfaces.StreamingHub
         Task SendAnimStateAsync(int state);
         Task SavePlayerAsync();
         Task QueryCreaturesAsync();
+        Task SendChatMessageAsync(string text);
     }
 }

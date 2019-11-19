@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using ElleRealTime.Shared.Entities.Generic;
 
 namespace ElleRealTime.Shared.BO
 {
@@ -79,6 +80,23 @@ namespace ElleRealTime.Shared.BO
 
         }
 
+        public static bool ChatMessageIsCommand(string text)
+        {
+            bool ret = false;
+            string[] parameters = text.Split(' ');
+            if (parameters[0][0] == '.') //i check only the first "parameter" (the name of the command) if starts with ".".
+            {
+                EnumEntity[] enumEntities = EnumUtils.ToEnumEntity<ServerCommands>();
+                string[] descriptions = Array.ConvertAll(enumEntities, x => x.Description.ToLower());
+                string stringToSearch = parameters[0].Remove(0, 1); //I search for the command without the dot.
+                ret = descriptions.Contains(stringToSearch.ToLower());
+            }
+            return ret;
+
+        }
+
     }
+
+
 
 }

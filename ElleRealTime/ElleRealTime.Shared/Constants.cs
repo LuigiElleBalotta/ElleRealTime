@@ -34,4 +34,12 @@ namespace ElleRealTime.Shared
         OnlyTrue = 1,
         OnlyFalse = 2
     }
+
+    public enum ServerCommands
+    {
+        CreateAccount,
+        ModifyPassword,
+        GetPlayerInfo,
+        Spawn
+    }
 }

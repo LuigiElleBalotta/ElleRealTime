@@ -11,5 +11,6 @@ namespace ElleRealTimeStd.Shared.Test.Interfaces.StreamingHub
         void OnAnimStateChange(int playerId, int state);
         void OnPlayerInfoSaved();
         void OnQueriedCreatures(CreatureUnity[] creatures);
+        void OnChatMessage(string playerName, string text);
     }
 }

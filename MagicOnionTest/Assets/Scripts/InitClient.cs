@@ -129,6 +129,11 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
         return streamingClient.SavePlayerAsync();
     }
 
+    public Task SendChatMessageAsync(string text)
+    {
+        return streamingClient.SendChatMessageAsync(text);
+    }
+
     // dispose client-connection before channel.ShutDownAsync is important!
     public async Task DisposeAsync()
     {
@@ -233,5 +238,11 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
                 }
             }
         }
+    }
+
+    void IGamingHubReceiver.OnChatMessage(string playerName, string text)
+    {
+        Debug.Log($"[OnChatMessage] {playerName} say: \"{text}\"");
+        //TODO: print to the chat frame.
     }
 }

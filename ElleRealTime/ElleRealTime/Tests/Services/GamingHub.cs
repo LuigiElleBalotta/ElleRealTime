@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ElleRealTime.Core;
 using ElleRealTime.Core.BO;
 using ElleRealTime.Core.BO.World;
 using ElleRealTime.Shared;
@@ -139,6 +140,20 @@ namespace ElleRealTime.Tests.Services
             Creature[] creatures = bo.GetCreatures();
             CreatureUnity[] ret = Creature.ToUnity(creatures);
             Broadcast(room).OnQueriedCreatures(ret);
+        }
+
+        public async Task SendChatMessageAsync(string text)//this string may have parameters
+        {
+            Program.Logger.Info($"[GamingHub] Received Chat Message: \"{text}\"");
+            if (Shared.BO.Utils.ChatMessageIsCommand(text))
+            {
+                Program.Logger.Info($"[GamingHub] Called server command: \"{text}\"");
+                CommandExecuter.Execute(text);
+            }
+            else
+            {
+                Broadcast(room).OnChatMessage(self.Name, text);
+            }
         }
     }
 }
