@@ -20,6 +20,9 @@ public class ChatFrame : MonoBehaviour
     private readonly List<ChatFrameMessage> chatMessages = new List<ChatFrameMessage>();
     private const float BottomSnapThreshold = 0.001f;
 
+    private static ChatFrame _instance;
+    public static ChatFrame Instance { get { return _instance; } }
+
     [UsedImplicitly]
     public bool SnapToBottom { get; set; } = true;
 
@@ -28,8 +31,10 @@ public class ChatFrame : MonoBehaviour
     {
         /*EventHandler.RegisterEvent<Unit, string>(EventHandler.GlobalDispatcher, GameEvents.UnitChat, OnUnitChat);
         EventHandler.RegisterEvent<HotkeyState>(chatFocusHotkey, GameEvents.HotkeyStateChanged, OnHotkeyStateChanged);*/
+        _instance = this;
         inputField.onSubmit.AddListener(OnSubmit);
         inputField.onDeselect.AddListener(OnDeselect);
+        inputField.onSelect.AddListener(OnSelect);
         /*
         GameObjectPool.PreInstantiate(messagePrototype, maxMessageCount);*/
     }
@@ -54,9 +59,16 @@ public class ChatFrame : MonoBehaviour
             scrollRect.normalizedPosition = Vector2.zero;
     }
 
+    private void OnSelect(string text)
+    {
+        Debug.Log("[CHAT] On SELECT");
+        BaseUnit.Instance.SetChatIsOpen(true);
+    }
+
     private void OnDeselect(string text)
     {
         inputField.text = string.Empty;
+        BaseUnit.Instance.SetChatIsOpen(true);
     }
 
     private void OnSubmit(string text)
@@ -70,7 +82,31 @@ public class ChatFrame : MonoBehaviour
             input.Say(text);*/
 
         if (EventSystem.current.currentSelectedGameObject == inputField.gameObject)
+        {
             EventSystem.current.SetSelectedGameObject(null);
+            BaseUnit.Instance.SetChatIsOpen(true);
+        }
+            
+    }
+
+    public void AddMessageToChat(string playerName, string text)
+    {
+        ChatFrameMessage chatFrameMessage;
+        if (chatMessages.Count >= maxMessageCount)
+        {
+            chatFrameMessage = chatMessages[0];
+            chatMessages.RemoveAt(0);
+        }
+        else
+        {
+            //Create an empty message
+            chatFrameMessage = GameObjectPool.Take(messagePrototype);
+            //Set the object inside the container.
+            chatFrameMessage.RectTransform.SetParent(messageContainer, false);
+        }
+        chatMessages.Add(chatFrameMessage);
+        chatFrameMessage.Modify(playerName, text);
+        chatFrameMessage.MoveToBottom();
     }
 
     /*private void OnUnitChat(Unit unit, string text)

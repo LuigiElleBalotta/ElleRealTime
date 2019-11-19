@@ -1,4 +1,6 @@
-﻿using JetBrains.Annotations;
+﻿using System;
+using JetBrains.Annotations;
+using MessagePack.Internal;
 using UnityEngine;
 using TMPro;
 
@@ -10,10 +12,10 @@ public class ChatFrameMessage : MonoBehaviour
 
     public RectTransform RectTransform => rectTransform;
 
-    /*public void Modify(Unit unit, string message)
+    public void Modify(string playerName, string message)
     {
-        messageLabel.text = $"[{chatGeneralString.Value}] [{unit.Name}]: {message}";
-    }*/
+        messageLabel.text = $"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}] [{playerName}]: {message}";
+    }
 
     public void MoveToBottom()
     {

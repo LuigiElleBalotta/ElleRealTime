@@ -61,7 +61,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageLabel: {fileID: 3265850371782150518}
   rectTransform: {fileID: 5794170065339070002}
-  chatGeneralString: {fileID: 11400000, guid: 2785eada039f3f14fa7022f43e9a8f24, type: 2}
 --- !u!114 &8228939563678306708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,7 +99,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: '[19/11/2019 15:21:53] [test]: sadsad'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c47beff5d796b214c94eda14cb6a876d, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 89b4a4b19073a5041a0ce46f36e991ca, type: 2}

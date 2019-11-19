@@ -243,6 +243,6 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
     void IGamingHubReceiver.OnChatMessage(string playerName, string text)
     {
         Debug.Log($"[OnChatMessage] {playerName} say: \"{text}\"");
-        //TODO: print to the chat frame.
+        ChatFrame.Instance.AddMessageToChat(playerName, text);
     }
 }

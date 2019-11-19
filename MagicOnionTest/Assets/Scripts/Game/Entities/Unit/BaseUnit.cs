@@ -23,8 +23,14 @@ public class BaseUnit : MonoBehaviour
     internal Vector3 Position;
     private bool settedTarget = false;
 
+    private bool m_ChatIsOpen = false;
+
+    private static BaseUnit _instance;
+    public static BaseUnit Instance { get { return _instance; } }
+
     void Awake()
     {
+        _instance = this;
     }
     // Start is called before the first frame update
     void Start()
@@ -55,7 +61,7 @@ public class BaseUnit : MonoBehaviour
                 Debug.Log($"Running: " + m_Running);
             }
             //Move forward + turn left
-            else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+            else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A) && !m_ChatIsOpen)
             {
                 transform.position += transform.TransformDirection(Vector3.forward * (m_Running ? speedRun : speedWalk) * Time.deltaTime);
                 transform.Rotate(Vector3.up, -1, Space.Self);
@@ -64,7 +70,7 @@ public class BaseUnit : MonoBehaviour
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
             }
             //Move forward + turn right
-            else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
+            else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D) && !m_ChatIsOpen)
             {
                 transform.position += transform.TransformDirection(Vector3.forward * (m_Running ? speedRun : speedWalk) * Time.deltaTime);
                 transform.Rotate(Vector3.up, 1, Space.Self);
@@ -73,7 +79,7 @@ public class BaseUnit : MonoBehaviour
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
             }
             //Move backward + turn left
-            else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
+            else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A) && !m_ChatIsOpen)
             {
                 transform.position += transform.TransformDirection(Vector3.back * speedWalk * Time.deltaTime);
                 transform.Rotate(Vector3.up, -1, Space.Self);
@@ -82,7 +88,7 @@ public class BaseUnit : MonoBehaviour
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
             }
             //Move backward + turn right
-            else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
+            else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D) && !m_ChatIsOpen)
             {
                 transform.position += transform.TransformDirection(Vector3.back * speedWalk * Time.deltaTime);
                 transform.Rotate(Vector3.up, 1, Space.Self);
@@ -91,21 +97,21 @@ public class BaseUnit : MonoBehaviour
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
             }
             //Turn right
-            else if (Input.GetKey(KeyCode.D))//Should rotate unit
+            else if (Input.GetKey(KeyCode.D) && !m_ChatIsOpen)//Should rotate unit
             {
                 transform.Rotate(Vector3.up, 1, Space.World);
                 SetAnimState(CharAnimState.ShuffleRight);
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
             }
             //Turn left
-            else if (Input.GetKey(KeyCode.A))//Should rotate unit
+            else if (Input.GetKey(KeyCode.A) && !m_ChatIsOpen)//Should rotate unit
             {
                 transform.Rotate(Vector3.up, -1, Space.World); //-1 sono i gradi di rotazione
                 SetAnimState(CharAnimState.ShuffleLeft);
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
             }
             //Move forward
-            else if (Input.GetKey(KeyCode.W))
+            else if (Input.GetKey(KeyCode.W) && !m_ChatIsOpen)
             {
                 transform.position += transform.TransformDirection(Vector3.forward * ( m_Running ? speedRun : speedWalk ) * Time.deltaTime);
                 SetAnimState(m_Running ? CharAnimState.Run : CharAnimState.Walk);
@@ -113,7 +119,7 @@ public class BaseUnit : MonoBehaviour
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
             }
             //Move backward
-            else if (Input.GetKey(KeyCode.S))
+            else if (Input.GetKey(KeyCode.S) && !m_ChatIsOpen)
             {
                 transform.position += transform.TransformDirection(Vector3.back * speedWalk * Time.deltaTime);
                 SetAnimState(CharAnimState.WalkBackwards);
@@ -121,7 +127,7 @@ public class BaseUnit : MonoBehaviour
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
             }
             //Sit down / stand up
-            else if (Input.GetKeyUp(KeyCode.X))
+            else if (Input.GetKeyUp(KeyCode.X) && !m_ChatIsOpen)
             {
                 if (m_Animator.GetInteger("CharAnimState") == (int) CharAnimState.Stand)
                 {
@@ -135,7 +141,7 @@ public class BaseUnit : MonoBehaviour
                 }
             }
             //Jump
-            else if (Input.GetKeyUp(KeyCode.Space))
+            else if (Input.GetKeyUp(KeyCode.Space) && !m_ChatIsOpen)
             {
                 SetAnimState(CharAnimState.Jump);
             }
@@ -165,6 +171,10 @@ public class BaseUnit : MonoBehaviour
         }
     }
 
+    public void SetChatIsOpen(bool isOpen)
+    {
+        m_ChatIsOpen = isOpen;
+    }
     void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.gameObject.tag);
