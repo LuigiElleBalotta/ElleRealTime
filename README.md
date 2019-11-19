@@ -29,12 +29,13 @@ Supports multiplayer and realtime engine.
 - Minimap
 - Player Info save (position) + load at next login
 - Npc spawn
+- Send commands from chat to server
 
 ## Planned todos
 - Support SqlLite DB (for offline play mode)
 - Health 
 - Chat
-- Send commands from chat to server
+
 
 ## Links
 [MagicOnion](https://github.com/Cysharp/MagicOnion/): Unified Realtime/API Engine for .NET Core and Unity.
