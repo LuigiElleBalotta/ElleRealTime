@@ -10,6 +10,8 @@ namespace ElleRealTimeBaseDAO.Interfaces
     public interface ICreatures : ITransactions
     {
         Creature[] GetCreatures();
-        void InsertSpawnCreature(string prefabName, Player player, DbTransaction trans);
+        void InsertSpawnCreature(int creatureId, Player player, DbTransaction trans);
+        CreatureTemplate[] GetCreaturesTemplate(CreatureTemplateFilter filter, DbTransaction trans);
+        void InsertCreatureTemplate(CreatureTemplate creatureTemplate, DbTransaction trans);
     }
 }

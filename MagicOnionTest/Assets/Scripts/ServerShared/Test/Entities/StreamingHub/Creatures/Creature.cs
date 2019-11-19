@@ -9,15 +9,15 @@ namespace ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Creatures
     public class CreatureUnity
     {
         [Key(0)]
-        public string PrefabName { get; set; }
-        [Key(1)]
         public Vector3 Position { get; set; }
-        [Key(2)]
+        [Key(1)]
         public Quaternion Rotation { get; set; }
+        [Key(2)]
+        public int CreatureID { get; set; }
         [Key(3)]
-        public int ID { get; set; }
-        [Key(4)]
         public int Guid { get; set; }
+        [Key(4)]
+        public string PrefabName { get; set; }
     }
 }
 

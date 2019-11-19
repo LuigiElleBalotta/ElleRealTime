@@ -43,10 +43,12 @@ namespace MessagePack.Resolvers
 
         static GeneratedResolverGetFormatterHelper()
         {
-            lookup = new global::System.Collections.Generic.Dictionary<Type, int>(2)
+            lookup = new global::System.Collections.Generic.Dictionary<Type, int>(4)
             {
-                {typeof(global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Creatures.CreatureUnity), 0 },
-                {typeof(global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player.Player), 1 },
+                {typeof(global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Creatures.CreatureUnity[]), 0 },
+                {typeof(global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Creatures.CreatureUnity), 1 },
+                {typeof(global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Creatures.CreatureTemplateUnity), 2 },
+                {typeof(global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player.Player), 3 },
             };
         }
 
@@ -57,8 +59,10 @@ namespace MessagePack.Resolvers
 
             switch (key)
             {
-                case 0: return new MessagePack.Formatters.ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Creatures.CreatureUnityFormatter();
-                case 1: return new MessagePack.Formatters.ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player.PlayerFormatter();
+                case 0: return new global::MessagePack.Formatters.ArrayFormatter<global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Creatures.CreatureUnity>();
+                case 1: return new MessagePack.Formatters.ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Creatures.CreatureUnityFormatter();
+                case 2: return new MessagePack.Formatters.ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Creatures.CreatureTemplateUnityFormatter();
+                case 3: return new MessagePack.Formatters.ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Player.PlayerFormatter();
                 default: return null;
             }
         }
@@ -95,11 +99,11 @@ namespace MessagePack.Formatters.ElleRealTimeStd.Shared.Test.Entities.StreamingH
             
             var startOffset = offset;
             offset += global::MessagePack.MessagePackBinary.WriteFixedArrayHeaderUnsafe(ref bytes, offset, 5);
-            offset += formatterResolver.GetFormatterWithVerify<string>().Serialize(ref bytes, offset, value.PrefabName, formatterResolver);
             offset += formatterResolver.GetFormatterWithVerify<global::UnityEngine.Vector3>().Serialize(ref bytes, offset, value.Position, formatterResolver);
             offset += formatterResolver.GetFormatterWithVerify<global::UnityEngine.Quaternion>().Serialize(ref bytes, offset, value.Rotation, formatterResolver);
-            offset += MessagePackBinary.WriteInt32(ref bytes, offset, value.ID);
+            offset += MessagePackBinary.WriteInt32(ref bytes, offset, value.CreatureID);
             offset += MessagePackBinary.WriteInt32(ref bytes, offset, value.Guid);
+            offset += formatterResolver.GetFormatterWithVerify<string>().Serialize(ref bytes, offset, value.PrefabName, formatterResolver);
             return offset - startOffset;
         }
 
@@ -115,11 +119,11 @@ namespace MessagePack.Formatters.ElleRealTimeStd.Shared.Test.Entities.StreamingH
             var length = global::MessagePack.MessagePackBinary.ReadArrayHeader(bytes, offset, out readSize);
             offset += readSize;
 
-            var __PrefabName__ = default(string);
             var __Position__ = default(global::UnityEngine.Vector3);
             var __Rotation__ = default(global::UnityEngine.Quaternion);
-            var __ID__ = default(int);
+            var __CreatureID__ = default(int);
             var __Guid__ = default(int);
+            var __PrefabName__ = default(string);
 
             for (int i = 0; i < length; i++)
             {
@@ -128,19 +132,19 @@ namespace MessagePack.Formatters.ElleRealTimeStd.Shared.Test.Entities.StreamingH
                 switch (key)
                 {
                     case 0:
-                        __PrefabName__ = formatterResolver.GetFormatterWithVerify<string>().Deserialize(bytes, offset, formatterResolver, out readSize);
-                        break;
-                    case 1:
                         __Position__ = formatterResolver.GetFormatterWithVerify<global::UnityEngine.Vector3>().Deserialize(bytes, offset, formatterResolver, out readSize);
                         break;
-                    case 2:
+                    case 1:
                         __Rotation__ = formatterResolver.GetFormatterWithVerify<global::UnityEngine.Quaternion>().Deserialize(bytes, offset, formatterResolver, out readSize);
                         break;
+                    case 2:
+                        __CreatureID__ = MessagePackBinary.ReadInt32(bytes, offset, out readSize);
+                        break;
                     case 3:
-                        __ID__ = MessagePackBinary.ReadInt32(bytes, offset, out readSize);
+                        __Guid__ = MessagePackBinary.ReadInt32(bytes, offset, out readSize);
                         break;
                     case 4:
-                        __Guid__ = MessagePackBinary.ReadInt32(bytes, offset, out readSize);
+                        __PrefabName__ = formatterResolver.GetFormatterWithVerify<string>().Deserialize(bytes, offset, formatterResolver, out readSize);
                         break;
                     default:
                         readSize = global::MessagePack.MessagePackBinary.ReadNextBlock(bytes, offset);
@@ -152,11 +156,84 @@ namespace MessagePack.Formatters.ElleRealTimeStd.Shared.Test.Entities.StreamingH
             readSize = offset - startOffset;
 
             var ____result = new global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Creatures.CreatureUnity();
-            ____result.PrefabName = __PrefabName__;
             ____result.Position = __Position__;
             ____result.Rotation = __Rotation__;
-            ____result.ID = __ID__;
+            ____result.CreatureID = __CreatureID__;
             ____result.Guid = __Guid__;
+            ____result.PrefabName = __PrefabName__;
+            return ____result;
+        }
+    }
+
+
+    public sealed class CreatureTemplateUnityFormatter : global::MessagePack.Formatters.IMessagePackFormatter<global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Creatures.CreatureTemplateUnity>
+    {
+
+        public int Serialize(ref byte[] bytes, int offset, global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Creatures.CreatureTemplateUnity value, global::MessagePack.IFormatterResolver formatterResolver)
+        {
+            if (value == null)
+            {
+                return global::MessagePack.MessagePackBinary.WriteNil(ref bytes, offset);
+            }
+            
+            var startOffset = offset;
+            offset += global::MessagePack.MessagePackBinary.WriteFixedArrayHeaderUnsafe(ref bytes, offset, 4);
+            offset += MessagePackBinary.WriteInt32(ref bytes, offset, value.ID);
+            offset += formatterResolver.GetFormatterWithVerify<string>().Serialize(ref bytes, offset, value.PrefabName, formatterResolver);
+            offset += formatterResolver.GetFormatterWithVerify<string>().Serialize(ref bytes, offset, value.Name, formatterResolver);
+            offset += formatterResolver.GetFormatterWithVerify<global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Creatures.CreatureUnity[]>().Serialize(ref bytes, offset, value.Creatures, formatterResolver);
+            return offset - startOffset;
+        }
+
+        public global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Creatures.CreatureTemplateUnity Deserialize(byte[] bytes, int offset, global::MessagePack.IFormatterResolver formatterResolver, out int readSize)
+        {
+            if (global::MessagePack.MessagePackBinary.IsNil(bytes, offset))
+            {
+                readSize = 1;
+                return null;
+            }
+
+            var startOffset = offset;
+            var length = global::MessagePack.MessagePackBinary.ReadArrayHeader(bytes, offset, out readSize);
+            offset += readSize;
+
+            var __ID__ = default(int);
+            var __PrefabName__ = default(string);
+            var __Name__ = default(string);
+            var __Creatures__ = default(global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Creatures.CreatureUnity[]);
+
+            for (int i = 0; i < length; i++)
+            {
+                var key = i;
+
+                switch (key)
+                {
+                    case 0:
+                        __ID__ = MessagePackBinary.ReadInt32(bytes, offset, out readSize);
+                        break;
+                    case 1:
+                        __PrefabName__ = formatterResolver.GetFormatterWithVerify<string>().Deserialize(bytes, offset, formatterResolver, out readSize);
+                        break;
+                    case 2:
+                        __Name__ = formatterResolver.GetFormatterWithVerify<string>().Deserialize(bytes, offset, formatterResolver, out readSize);
+                        break;
+                    case 3:
+                        __Creatures__ = formatterResolver.GetFormatterWithVerify<global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Creatures.CreatureUnity[]>().Deserialize(bytes, offset, formatterResolver, out readSize);
+                        break;
+                    default:
+                        readSize = global::MessagePack.MessagePackBinary.ReadNextBlock(bytes, offset);
+                        break;
+                }
+                offset += readSize;
+            }
+
+            readSize = offset - startOffset;
+
+            var ____result = new global::ElleRealTimeStd.Shared.Test.Entities.StreamingHub.Creatures.CreatureTemplateUnity();
+            ____result.ID = __ID__;
+            ____result.PrefabName = __PrefabName__;
+            ____result.Name = __Name__;
+            ____result.Creatures = __Creatures__;
             return ____result;
         }
     }

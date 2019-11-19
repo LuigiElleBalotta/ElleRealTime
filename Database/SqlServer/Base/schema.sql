@@ -67,6 +67,35 @@ WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW
 ON [PRIMARY]
 GO
 
+-- ----------------------------
+-- Table structure for creatures_template
+-- ----------------------------
+IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[creatures_template]') AND type IN ('U'))
+	DROP TABLE [dbo].[creatures_template]
+GO
+
+CREATE TABLE [dbo].[creatures_template] (
+  [ID] int IDENTITY(1,1) NOT NULL,
+  [PrefabName] varchar(255) COLLATE Latin1_General_CI_AS  NOT NULL,
+  [Name] varchar(255) COLLATE Latin1_General_CI_AS  NOT NULL,
+  PRIMARY KEY(ID)
+)
+GO
+
+ALTER TABLE [dbo].[creatures_template] SET (LOCK_ESCALATION = TABLE)
+GO
+
+
+-- ----------------------------
+-- Primary Key structure for table creatures_template
+-- ----------------------------
+ALTER TABLE [dbo].[creatures_template] ADD CONSTRAINT [PK__creature__3214EC27BBAEA0AD] PRIMARY KEY CLUSTERED ([ID])
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+
 
 -- ----------------------------
 -- Table structure for creatures
@@ -76,15 +105,26 @@ IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[cr
 GO
 
 CREATE TABLE [dbo].[creatures] (
-  [PrefabName] varchar(255) COLLATE Latin1_General_CI_AS  NOT NULL,
   [PosX] float(53)  NOT NULL,
   [PosY] float(53)  NOT NULL,
   [PosZ] float(53)  NOT NULL,
   [RotX] float(53)  NOT NULL,
   [RotY] float(53)  NOT NULL,
-  [RotZ] float(53)  NOT NULL
+  [RotZ] float(53)  NOT NULL,
+  [Guid] int  IDENTITY(1,1) NOT NULL,
+  [CreatureID] int  NOT NULL
 )
 GO
 
 ALTER TABLE [dbo].[creatures] SET (LOCK_ESCALATION = TABLE)
 GO
+
+
+-- ----------------------------
+-- Primary Key structure for table creatures
+-- ----------------------------
+ALTER TABLE [dbo].[creatures] ADD CONSTRAINT [PK__creature__A2B5777C674712E1] PRIMARY KEY CLUSTERED ([Guid])
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+

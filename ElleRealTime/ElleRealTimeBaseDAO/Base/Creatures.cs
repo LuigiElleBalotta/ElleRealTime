@@ -12,14 +12,16 @@ namespace ElleRealTimeBaseDAO.Base
     {
         public static string GetBaseQueryCreatures()
         {
-            return "SELECT * FROM creatures";
+            return "SELECT C.*, CT.PrefabName " +
+                   "FROM creatures C " +
+                   "JOIN creatures_template CT ON CT.ID = C.CreatureID ";
         }
 
-        public static void InsertSpawnCreature(ElleRealTimeDbDAO dao, string prefabName, Player player, DbTransaction trans)
+        public static void InsertSpawnCreature(ElleRealTimeDbDAO dao, int creatureId, Player player, DbTransaction trans)
         {
             Hashtable prms = new Hashtable
             {
-                { $"@{nameof(Creature.PrefabName)}", prefabName },
+                { $"@{nameof(Creature.CreatureID)}", creatureId },
                 { $"@{nameof(Creature.PosX)}", player.Position.x },
                 { $"@{nameof(Creature.PosY)}", player.Position.y },
                 { $"@{nameof(Creature.PosZ)}", player.Position.z },
@@ -28,8 +30,8 @@ namespace ElleRealTimeBaseDAO.Base
                 { $"@{nameof(Creature.RotZ)}", player.Rotation.z },
             };
 
-            dao.ExecuteNonQuery("INSERT INTO creatures(PrefabName, PosX, PosY, PosZ, RotX, RotY, RotZ) VALUES ( " +
-                                $" @{nameof(Creature.PrefabName)}, " +
+            dao.ExecuteNonQuery("INSERT INTO creatures(CreatureID, PosX, PosY, PosZ, RotX, RotY, RotZ) VALUES ( " +
+                                $" @{nameof(Creature.CreatureID)}, " +
                                 $" @{nameof(Creature.PosX)}, " +
                                 $" @{nameof(Creature.PosY)}, " +
                                 $" @{nameof(Creature.PosZ)}, " +
@@ -37,6 +39,12 @@ namespace ElleRealTimeBaseDAO.Base
                                 $" @{nameof(Creature.RotY)}, " +
                                 $" @{nameof(Creature.RotZ)} " +
                                 $") ", prms, trans);
+        }
+
+        public static string GetBaseQueryCreatureTemplate(CreatureTemplateFilter filter, Hashtable prms)
+        {
+            return "SELECT * FROM creatures_template CT " +
+                   filter.WhereCondition(prms);
         }
     }
 }
