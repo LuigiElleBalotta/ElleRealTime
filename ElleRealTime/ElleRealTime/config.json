@@ -13,11 +13,9 @@
     "Name": "ellerealtime",
     "Port": 3306,
     "DAOAssembly": "ElleRealTime.MySql",
-    "DAONamespace": "",
     "DbConnectionPoolSize": 10,
     "DBCmdTimeout": -1,
     "DbTraceQueries": 1,
-    "DbSlowQueryLog": 0,
     "ProviderName": "MySql.Data.MySqlClient"
   }
    */
@@ -29,7 +27,6 @@
     "Name": "ellerealtime",
     "Port": 1433,
     "DAOAssembly": "ElleRealTime.SqlServer",
-    "DAONamespace": "",
     "DbConnectionPoolSize": 10,
     "DBCmdTimeout": -1,
     "DbTraceQueries": 1,
@@ -39,5 +36,4 @@
   "Application": {
     
   }
-
 }
