@@ -14,10 +14,10 @@ Supports multiplayer and realtime engine.
 - .Net Standard 2.0 .Net Core 3 are required.
 - Compile the solution with Visual Studio (i'm using Visual Studio 2019 Community edition).
 - Execute .sql files inside Database folder. You can choose between MySql & SqlServer, execute their schema.sql and then execute InitData.sql
-- Write config.json file with your data (it's inside "ElleRealTime/ElleRealTime/bin/Debug(or Release)/netcoreapp3.0/")
+- Write config.json file with your data (it's inside "ElleRealTime/ElleRealTime/bin/Debug(or Release)/netcoreapp3.0/") [reference](https://github.com/LuigiElleBalotta/ElleRealTime/wiki/Configuration-file)
 - Start the server console 
 - Start unity game
-- Use your credential by creating an account (see server command [here](https://github.com/LuigiElleBalotta/ElleRealTime/wiki/Commands) or by using test/test or admin/admin
+- Use your credential by creating an account (see server command [here](https://github.com/LuigiElleBalotta/ElleRealTime/wiki/Commands) or by using test/test or admin/admin)
 - Enjoy
 
 
