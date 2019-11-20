@@ -865,18 +865,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &711847742 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9061058185785216220, guid: 6be8a861051db0c4ba89dc377d31aa50,
-    type: 3}
-  m_PrefabInstance: {fileID: 711847738}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba462083e9ebd04c94a4a4bba86e692, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &711847743 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8124448700723823767, guid: 6be8a861051db0c4ba89dc377d31aa50,
@@ -908,7 +896,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollRect: {fileID: 711847741}
-  messagePrototype: {fileID: 711847742}
+  messagePrototype: {fileID: 3071490999461273505, guid: 14aef5c8a7943ff42b18259651c0069c,
+    type: 3}
   inputField: {fileID: 711847743}
   messageContainer: {fileID: 711847740}
   maxMessageCount: 100
