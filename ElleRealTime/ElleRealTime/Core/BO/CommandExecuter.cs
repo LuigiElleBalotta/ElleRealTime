@@ -78,6 +78,12 @@ namespace ElleRealTime.Core.BO
                                 Program.Logger.Success($"Rotation X: {playerInfo[0].RotX}");
                                 Program.Logger.Success($"Rotation Y: {playerInfo[0].RotY}");
                                 Program.Logger.Success($"Rotation Z: {playerInfo[0].RotZ}");
+                                Program.Logger.Success($"CurrentHealth: {playerInfo[0].Health}");
+                                Program.Logger.Success($"Max Health: {playerInfo[0].MaxHealth}");
+                                Program.Logger.Success($"Damage: {playerInfo[0].Damage}");
+                                Program.Logger.Success($"Level: {playerInfo[0].Level}");
+                                Program.Logger.Success($"Experience: {playerInfo[0].Experience}");
+                                Program.Logger.Success($"Experience to next level: {playerInfo[0].ExpToNextLevel}");
                             }
                             else
                             {

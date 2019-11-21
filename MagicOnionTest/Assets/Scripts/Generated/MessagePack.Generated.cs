@@ -266,11 +266,17 @@ namespace MessagePack.Formatters.ElleRealTimeStd.Shared.Test.Entities.StreamingH
             }
             
             var startOffset = offset;
-            offset += global::MessagePack.MessagePackBinary.WriteFixedArrayHeaderUnsafe(ref bytes, offset, 4);
+            offset += global::MessagePack.MessagePackBinary.WriteFixedArrayHeaderUnsafe(ref bytes, offset, 10);
             offset += formatterResolver.GetFormatterWithVerify<string>().Serialize(ref bytes, offset, value.Name, formatterResolver);
             offset += formatterResolver.GetFormatterWithVerify<global::UnityEngine.Vector3>().Serialize(ref bytes, offset, value.Position, formatterResolver);
             offset += formatterResolver.GetFormatterWithVerify<global::UnityEngine.Quaternion>().Serialize(ref bytes, offset, value.Rotation, formatterResolver);
             offset += MessagePackBinary.WriteInt32(ref bytes, offset, value.ID);
+            offset += MessagePackBinary.WriteInt32(ref bytes, offset, value.Health);
+            offset += MessagePackBinary.WriteInt32(ref bytes, offset, value.MaxHealth);
+            offset += MessagePackBinary.WriteInt32(ref bytes, offset, value.Damage);
+            offset += MessagePackBinary.WriteInt32(ref bytes, offset, value.Level);
+            offset += MessagePackBinary.WriteInt32(ref bytes, offset, value.Experience);
+            offset += MessagePackBinary.WriteInt32(ref bytes, offset, value.ExpToNextLevel);
             return offset - startOffset;
         }
 
@@ -290,6 +296,12 @@ namespace MessagePack.Formatters.ElleRealTimeStd.Shared.Test.Entities.StreamingH
             var __Position__ = default(global::UnityEngine.Vector3);
             var __Rotation__ = default(global::UnityEngine.Quaternion);
             var __ID__ = default(int);
+            var __Health__ = default(int);
+            var __MaxHealth__ = default(int);
+            var __Damage__ = default(int);
+            var __Level__ = default(int);
+            var __Experience__ = default(int);
+            var __ExpToNextLevel__ = default(int);
 
             for (int i = 0; i < length; i++)
             {
@@ -309,6 +321,24 @@ namespace MessagePack.Formatters.ElleRealTimeStd.Shared.Test.Entities.StreamingH
                     case 3:
                         __ID__ = MessagePackBinary.ReadInt32(bytes, offset, out readSize);
                         break;
+                    case 4:
+                        __Health__ = MessagePackBinary.ReadInt32(bytes, offset, out readSize);
+                        break;
+                    case 5:
+                        __MaxHealth__ = MessagePackBinary.ReadInt32(bytes, offset, out readSize);
+                        break;
+                    case 6:
+                        __Damage__ = MessagePackBinary.ReadInt32(bytes, offset, out readSize);
+                        break;
+                    case 7:
+                        __Level__ = MessagePackBinary.ReadInt32(bytes, offset, out readSize);
+                        break;
+                    case 8:
+                        __Experience__ = MessagePackBinary.ReadInt32(bytes, offset, out readSize);
+                        break;
+                    case 9:
+                        __ExpToNextLevel__ = MessagePackBinary.ReadInt32(bytes, offset, out readSize);
+                        break;
                     default:
                         readSize = global::MessagePack.MessagePackBinary.ReadNextBlock(bytes, offset);
                         break;
@@ -323,6 +353,12 @@ namespace MessagePack.Formatters.ElleRealTimeStd.Shared.Test.Entities.StreamingH
             ____result.Position = __Position__;
             ____result.Rotation = __Rotation__;
             ____result.ID = __ID__;
+            ____result.Health = __Health__;
+            ____result.MaxHealth = __MaxHealth__;
+            ____result.Damage = __Damage__;
+            ____result.Level = __Level__;
+            ____result.Experience = __Experience__;
+            ____result.ExpToNextLevel = __ExpToNextLevel__;
             return ____result;
         }
     }

@@ -23,6 +23,7 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
     private bool isSelfDisConnected;
 
     public GameObject myModel;
+    private Player MyPlayerRef;
     public List<GameObject> ListGameobjects = new List<GameObject>(); //Dummy, "Super Zombie"
     public List<int> instantiatedGameobjects = new List<int>();
     private static InitClient _instance;
@@ -72,7 +73,6 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
         // Initialize the Hub
         this.channel = new Channel("localhost", 12345, ChannelCredentials.Insecure);
         GameObject player = await ConnectAsync(channel, "Lordaeron");
-
         await this.streamingClient.QueryCreaturesAsync();
         this.RegisterDisconnectEvent(streamingClient);
     }
@@ -85,8 +85,14 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
         var roomPlayers = await this.streamingClient.JoinAsync(roomName, Client.GlobalVariables.CurrentAccountID);
         foreach (var player in roomPlayers)
         {
-            if( player.ID != Client.GlobalVariables.CurrentAccountID )
+            if (player.ID != Client.GlobalVariables.CurrentAccountID)
                 (this as IGamingHubReceiver).OnJoin(player);
+            else
+            {
+                MyPlayerRef = player;
+                TextManager.Instance.UpdatePlayerText(player);
+            }
+                
         }
 
         currentPlayerName = players[Client.GlobalVariables.CurrentAccountID].name;

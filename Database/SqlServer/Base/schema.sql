@@ -44,6 +44,13 @@ GO
 
 
 
+C-- ----------------------------
+-- Table structure for players_info
+-- ----------------------------
+IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[players_info]') AND type IN ('U'))
+	DROP TABLE [dbo].[players_info]
+GO
+
 CREATE TABLE [dbo].[players_info] (
   [AccountID] int  NOT NULL,
   [PosX] float(53)  NOT NULL,
@@ -51,7 +58,14 @@ CREATE TABLE [dbo].[players_info] (
   [PosZ] float(53)  NOT NULL,
   [RotX] float(53)  NOT NULL,
   [RotY] float(53)  NOT NULL,
-  [RotZ] float(53)  NOT NULL
+  [RotZ] float(53)  NOT NULL,
+  [RotW] float(53)  NOT NULL,
+  [Health] int DEFAULT ((100)) NOT NULL,
+  [MaxHealth] int DEFAULT ((100)) NOT NULL,
+  [Damage] int DEFAULT ((10)) NOT NULL,
+  [Level] int DEFAULT ((1)) NOT NULL,
+  [Experience] int DEFAULT ((0)) NOT NULL,
+  [ExpToNextLevel] int DEFAULT ((100)) NOT NULL
 )
 GO
 
@@ -66,6 +80,8 @@ ALTER TABLE [dbo].[players_info] ADD CONSTRAINT [PK__players___349DA586E401A15B]
 WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
 ON [PRIMARY]
 GO
+
+
 
 -- ----------------------------
 -- Table structure for creatures_template

@@ -54,7 +54,13 @@ namespace ElleRealTime.Tests.Services
                     ID = playerInfo.AccountID,
                     Name = playerInfo.Username,
                     Position = new Vector3(playerInfo.PosX, playerInfo.PosY, playerInfo.PosZ),
-                    Rotation = new Quaternion(playerInfo.RotX, playerInfo.RotY, playerInfo.RotZ, 0)
+                    Rotation = new Quaternion(playerInfo.RotX, playerInfo.RotY, playerInfo.RotZ, playerInfo.RotW),
+                    Health = playerInfo.Health,
+                    MaxHealth = playerInfo.MaxHealth,
+                    Damage = playerInfo.Damage,
+                    Level = playerInfo.Level,
+                    Experience = playerInfo.Experience,
+                    ExpToNextLevel = playerInfo.ExpToNextLevel
                 };
             }
             else
@@ -67,7 +73,13 @@ namespace ElleRealTime.Tests.Services
                     ID = account.ID,
                     Name = account.Username,
                     Position = DefaultVector3,
-                    Rotation = DefaultQuaternion
+                    Rotation = DefaultQuaternion,
+                    Health = 100,
+                    MaxHealth = 100,
+                    Damage = 10,
+                    Level = 1,
+                    Experience = 0,
+                    ExpToNextLevel = 100
                 };
             }
 
@@ -95,7 +107,7 @@ namespace ElleRealTime.Tests.Services
             self.Rotation = rotation;
 
             //Program.Logger.Info($"=================================={DateTime.Now.ToString(Constants.DATETIME_FORMAT)}==============================");
-            Program.Logger.Info($"[GamingHub] \"{self.Name}\" is moving!");
+            //Program.Logger.Info($"[GamingHub] \"{self.Name}\" is moving!");
             //Program.Logger.Info($"Vector3: x={position.x}, y={position.y}, z={position.z} ");
             //Program.Logger.Info($"Quaternion: x={rotation.x}, y={rotation.y}, z={rotation.z}, w={rotation.w}");
            // Program.Logger.Info($"===================================================================================");
@@ -122,8 +134,15 @@ namespace ElleRealTime.Tests.Services
                 RotX = self.Rotation.x,
                 RotY = self.Rotation.y,
                 RotZ = self.Rotation.z,
+                RotW = self.Rotation.w,
 
-                AccountID = self.ID
+                AccountID = self.ID,
+                Health = self.Health,
+                MaxHealth = self.MaxHealth,
+                Damage = self.Damage,
+                Level = self.Level,
+                Experience = self.Experience,
+                ExpToNextLevel = self.ExpToNextLevel
             };
 
             bo.SavePlayerInfo(playerInfo);

@@ -59,6 +59,13 @@ CREATE TABLE IF NOT EXISTS `players_info` (
   `RotX` float NOT NULL,
   `RotY` float NOT NULL,
   `RotZ` float NOT NULL,
+  `RotW` float NOT NULL,
+  `Health` int(11) NOT NULL DEFAULT '100',
+  `MaxHealth` int(11) NOT NULL DEFAULT '100',
+  `Damage` int(11) NOT NULL DEFAULT '10',
+  `Level` int(11) NOT NULL DEFAULT '1',
+  `Experience` int(11) NOT NULL DEFAULT '0',
+  `ExpToNextLevel` int(11) NOT NULL DEFAULT '100',
   PRIMARY KEY (`AccountID`),
   CONSTRAINT `FK_Info_Accounts` FOREIGN KEY (`AccountID`) REFERENCES `accounts` (`ID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

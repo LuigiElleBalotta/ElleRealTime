@@ -15,5 +15,12 @@ namespace ElleRealTime.Shared.DBEntities.PlayersInfo
         public float RotX { get; set; }
         public float RotY { get; set; }
         public float RotZ { get; set; }
+        public float RotW { get; set; }
+        public int Health { get; set; }
+        public int MaxHealth { get; set; }
+        public int Damage { get; set; }
+        public int Level { get; set; }
+        public int Experience { get; set; }
+        public int ExpToNextLevel { get; set; }
     }
 }
