@@ -1,0 +1,44 @@
+newmtl Arms0_lowSG
+illum 4
+Kd 0.30 0.21 0.21
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl Axe2_lowSG
+illum 4
+Kd 0.07 0.14 0.43
+Ka 0.50 0.50 0.50
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 0.00
+newmtl Belt1_lowSG
+illum 4
+Kd 0.21 0.30 0.29
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl Foot_lowSG
+illum 4
+Kd 0.21 0.30 0.21
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl Hemlet0_lowSG
+illum 4
+Kd 0.21 0.21 0.30
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl LShoulder0_lowSG
+illum 4
+Kd 0.30 0.21 0.29
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl Torso_lowSG
+illum 4
+Kd 0.30 0.29 0.21
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
