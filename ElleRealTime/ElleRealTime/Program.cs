@@ -30,7 +30,7 @@ namespace ElleRealTime
 
 
 
-            var port = new ServerPort("localhost", 12345, ServerCredentials.Insecure);
+            var port = new ServerPort("0.0.0.0", 12345, ServerCredentials.Insecure);
 
             var server = new global::Grpc.Core.Server
             {

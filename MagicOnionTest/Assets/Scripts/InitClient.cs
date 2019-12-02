@@ -71,7 +71,7 @@ public class InitClient : MonoBehaviour, IGamingHubReceiver
     private async void InitializeClient()
     {
         // Initialize the Hub
-        this.channel = new Channel("localhost", 12345, ChannelCredentials.Insecure);
+        this.channel = new Channel("51.254.131.242", 12345, ChannelCredentials.Insecure);
         GameObject player = await ConnectAsync(channel, "Lordaeron");
         await this.streamingClient.QueryCreaturesAsync();
         this.RegisterDisconnectEvent(streamingClient);
