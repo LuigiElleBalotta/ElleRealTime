@@ -98,7 +98,7 @@ public class WarcraftCamera : MonoBehaviour
         if (!target)
             return;
 
-        UpdateTargetPosition(false);
+        UpdateTargetPosition(true);
         currentActualHeight = Mathf.MoveTowards(currentActualHeight, target.IsAlive ? targetHeight : deadTargetHeight, targetHeightDampening * Time.deltaTime);
 
         // If either mouse buttons are down, let the mouse govern camera position

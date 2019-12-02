@@ -28,6 +28,8 @@ public class BaseUnit : MonoBehaviour
     private static BaseUnit _instance;
     public static BaseUnit Instance { get { return _instance; } }
 
+    public VirtualJoystick moveJoystick;
+
     void Awake()
     {
         _instance = this;
@@ -39,6 +41,7 @@ public class BaseUnit : MonoBehaviour
         m_Rigidbody = gameObject.GetComponent<Rigidbody>();
         m_Walking = m_Animator.GetBool("IsWalking");
         Position = transform.position;
+        moveJoystick = VirtualJoystick.Instance;
         Debug.Log("Start, walking = " + m_Walking);
     }
 
@@ -61,7 +64,7 @@ public class BaseUnit : MonoBehaviour
                 Debug.Log($"Running: " + m_Running);
             }
             //Move forward + turn left
-            else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A) && !m_ChatIsOpen)
+            else if (((Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A)) || moveJoystick.IsMovingWA()) && !m_ChatIsOpen)
             {
                 transform.position += transform.TransformDirection(Vector3.forward * (m_Running ? speedRun : speedWalk) * Time.deltaTime);
                 transform.Rotate(Vector3.up, -1, Space.Self);
@@ -70,7 +73,7 @@ public class BaseUnit : MonoBehaviour
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
             }
             //Move forward + turn right
-            else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D) && !m_ChatIsOpen)
+            else if (((Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D)) || moveJoystick.IsMovingWD()) && !m_ChatIsOpen)
             {
                 transform.position += transform.TransformDirection(Vector3.forward * (m_Running ? speedRun : speedWalk) * Time.deltaTime);
                 transform.Rotate(Vector3.up, 1, Space.Self);
@@ -79,7 +82,7 @@ public class BaseUnit : MonoBehaviour
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
             }
             //Move backward + turn left
-            else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A) && !m_ChatIsOpen)
+            else if (((Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A)) || moveJoystick.IsMovingSA()) && !m_ChatIsOpen)
             {
                 transform.position += transform.TransformDirection(Vector3.back * speedWalk * Time.deltaTime);
                 transform.Rotate(Vector3.up, -1, Space.Self);
@@ -88,7 +91,7 @@ public class BaseUnit : MonoBehaviour
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
             }
             //Move backward + turn right
-            else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D) && !m_ChatIsOpen)
+            else if (((Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D)) || moveJoystick.IsMovingSD()) && !m_ChatIsOpen)
             {
                 transform.position += transform.TransformDirection(Vector3.back * speedWalk * Time.deltaTime);
                 transform.Rotate(Vector3.up, 1, Space.Self);
@@ -97,21 +100,21 @@ public class BaseUnit : MonoBehaviour
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
             }
             //Turn right
-            else if (Input.GetKey(KeyCode.D) && !m_ChatIsOpen)//Should rotate unit
+            else if ((Input.GetKey(KeyCode.D)) && !m_ChatIsOpen)//Should rotate unit
             {
                 transform.Rotate(Vector3.up, 1, Space.World);
                 SetAnimState(CharAnimState.ShuffleRight);
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
             }
             //Turn left
-            else if (Input.GetKey(KeyCode.A) && !m_ChatIsOpen)//Should rotate unit
+            else if ((Input.GetKey(KeyCode.A)) && !m_ChatIsOpen)//Should rotate unit
             {
                 transform.Rotate(Vector3.up, -1, Space.World); //-1 sono i gradi di rotazione
                 SetAnimState(CharAnimState.ShuffleLeft);
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
             }
             //Move forward
-            else if (Input.GetKey(KeyCode.W) && !m_ChatIsOpen)
+            else if ((Input.GetKey(KeyCode.W) || moveJoystick.IsMovingW()) && !m_ChatIsOpen)
             {
                 transform.position += transform.TransformDirection(Vector3.forward * ( m_Running ? speedRun : speedWalk ) * Time.deltaTime);
                 SetAnimState(m_Running ? CharAnimState.Run : CharAnimState.Walk);
@@ -119,7 +122,7 @@ public class BaseUnit : MonoBehaviour
                 InitClient.Instance.MoveAsync(transform.position, transform.rotation);
             }
             //Move backward
-            else if (Input.GetKey(KeyCode.S) && !m_ChatIsOpen)
+            else if ((Input.GetKey(KeyCode.S) || moveJoystick.IsMovingS()) && !m_ChatIsOpen)
             {
                 transform.position += transform.TransformDirection(Vector3.back * speedWalk * Time.deltaTime);
                 SetAnimState(CharAnimState.WalkBackwards);
@@ -158,6 +161,11 @@ public class BaseUnit : MonoBehaviour
             }
         }
         Position = transform.position;
+
+        if (moveJoystick.InputDirection != Vector3.zero)
+        {
+            //dir = moveJoystick.InputDirection
+        }
     }
 
     void SetAnimState(CharAnimState state)
@@ -178,5 +186,21 @@ public class BaseUnit : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.gameObject.tag);
+    }
+
+    public void SimulateWalk(Vector3 newPosition)
+    {
+        SetAnimState(m_Running ? CharAnimState.Run : CharAnimState.Walk);
+        transform.position = newPosition;
+    }
+
+    public void ChangeRotation(Quaternion newRot)
+    {
+        transform.rotation = newRot;
+    }
+
+    public void SetIdle()
+    {
+        SetAnimState(CharAnimState.Stand);
     }
 }
